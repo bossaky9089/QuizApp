@@ -1,11 +1,11 @@
-## Quiz Application
+# Quiz Application
 
-# Requirements
+## Requirements
 1. Node js
 2. Mozilla firefox (this is working on chrome too but some functionalities might not work properly)
 3. vscode
 
-# Steps To Follow
+## Steps To Follow
 1. Goto mozilla firefox
 2. type about:config and search for backdrop-filter and enable it if not so
 3. Goto vscode and open terminal
