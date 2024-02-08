@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Scoreboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+    <style>
+        body{
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            background:url('images/diagonal-1468348_1920.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: #354573;
+            background-blend-mode:soft-light;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            height: 95vh;
+            overflow: hidden;
+            width: 97%;
+            position: relative;
+            background-color: #41f37970;
+            backdrop-filter: blur(10px);
+            box-shadow: 5px 5px 10px rgba(0,0,0, .5);
+            border-radius: 30px;
+        }
+        .container .container1{
+            height: 100%;
+            width: 100%;
+            position:absolute;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #79aa80 rgba(255, 255, 255, 0);
+        }
+        .container .container1 .container2{
+            height: 300%;
+            width: 100%;
+            position:absolute;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container .container1 .container2 .quizname{
+            font-size: 100px;
+            color: #d7f9db;
+            z-index: 8;
+            text-shadow: 4px 4px 5px #35457386;
+            font-family: "Ubuntu", sans-serif;
+            font-weight: 700;
+            position:relative;
+            -webkit-text-stroke: 5px #354573;
+        }
+        .container .container1 .container2 .info1{
+            position:relative;
+            height: 20%;
+            width: 90%;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .container .container1 .container2 .info2{
+            position:relative;
+            height: 70%;
+            width: 90%;
+            flex-direction: column;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .container .container1 .container2 .info1 .userinfo{
+            position:relative;
+            height: 90%;
+            width: 35%;
+            background-color: #41f37970;
+        }
+        .container .container1 .container2 .info1 .scoreinfo{
+            position:relative;
+            height: 90%;
+            font-family: "Ubuntu", sans-serif;
+            width: 55%;
+            background-color: #41f37970;
+        }
+        .container .container1 .container2 .info2 .graph{
+            position:relative;
+            height: 50%;
+            width: 100%;
+            background-color: #41f37970;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container .container1 .container2 .info2 .correctq{
+            position:relative;
+            height: 45%;
+            overflow:hidden;
+            width: 100%;
+            background-color: #41f37970;
+        }
+        .container .container1 .container2 .info1 .userinfo .circle{
+            height: 150px;
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 120px;
+            border-radius: 60px;
+            background-color: chartreuse;
+            position:absolute;
+            top: 50%;
+            transform: translateY(-100px);
+            left: 20px;
+        }
+        .container .container1 .container2 .info1 .userinfo .texthead{
+            position:absolute;
+            left: 170px;
+            top: 80px;
+            font-family: "Ubuntu", sans-serif;
+            color: #d7f9db;
+        }
+        .container .container1 .container2 .info1 .userinfo .texthead .head,
+        .container .container1 .container2 .info1 .scoreinfo .head1,
+        .container .container1 .container2 .info2 .graph .texxt .head
+        {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .container .container1 .container2 .info1 .userinfo .texthead .text,
+        .container .container1 .container2 .info1 .scoreinfo .text,
+        .container .container1 .container2 .info2 .graph .texxt .text{
+            font-size: 40px;
+            font-weight: 300;
+            left: 20px;
+            position: relative;
+        }
+        .container .container1 .container2 .info1 .userinfo .texthead .attempt{
+            transform: translate(-10px, 10px);
+            position:absolute;
+        }
+        .container .container1 .container2 .info1 .userinfo .texthead .attemptl{
+            width: 200px;
+            transform: translate(80px, 10px);
+            position:absolute;
+        }
+        .container .container1 .container2 .info1 .scoreinfo .st{
+            height: 80%;
+            width: 80%;
+            left: 10%;
+            position: relative;
+            display:flex;
+            justify-content:space-evenly;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container .container1 .container2 .info1 .scoreinfo .st .result{
+            display:flex;
+            color: #d7f9db;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .container .container1 .container2 .info1 .scoreinfo .st .score{
+            width: 100%;
+            font-size: 60px;
+            top: -10px;
+            left: -30px;
+            position:relative;
+            color: #d7f9db;
+        }
+        .container .container1 .container2 .info1 .scoreinfo .st .w{
+            color: rgb(219, 109, 131);
+        }
+        .container .container1 .container2 .info1 .scoreinfo .st .r{
+            color: #41f379;
+        }
+        .container .container1 .container2 .info1 .scoreinfo .st .ques-list{
+            background: #354573;
+            height: 50px;
+            width: 100%;
+            display:flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-weight: 500;
+            font-size: 30px;
+        }
+        .container .container1 .container2 .info1 .scoreinfo .st .q{
+            cursor: pointer;
+        }
+        .container .container1 .container2 .info1 .scoreinfo .st .q:hover{
+            text-decoration: underline;
+            transform: scale(1.2) translateY(-3px);
+        }
+        .container .container1 .container2 .info2 .graph .box{
+            position:relative;
+            height: 50%;
+            top: 15%;
+            display:flex;
+            align-items: flex-end;
+            justify-content: space-evenly;
+            width: 80%;
+            border-left: 5px solid #354573;
+            border-bottom: 5px solid #354573;
+            border-top-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .container .container1 .container2 .info2 .graph .box .bb{
+            width: 50px;
+            background-color: #354573;
+            position:relative;
+            display:flex;
+            margin-bottom: 0;
+            color: #d7f9db;
+            font-family: "Ubuntu", sans-serif;
+            font-size: 30px;
+            font-weight: 500;
+            justify-content: center;
+            align-items: center;
+        }
+        .container .container1 .container2 .info2 .graph .para{
+            position:relative;
+            color: #d7f9db;
+            left: -86%;
+            transform: rotateZ(-90deg);
+            font-family: "Ubuntu", sans-serif;
+            font-size: 30px;
+        }
+        .container .container1 .container2 .info2 .graph .texxt{
+            position:absolute;
+            transform: translateY(-70%);
+            display: flex;
+            width: 100%;
+            font-family: "Ubuntu", sans-serif;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 40%;
+            flex-direction: column;
+        }
+        .container .container1 .container2 .info2 .graph .texxt .analysis{
+            display: flex;
+            position: relative;
+            left: 10%;
+            color: #d7f9db;
+            width: 60%;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .container .container1 .container2 .info2 .graph .texxt .graphtext{
+            position:relative;
+            left: -35%;
+            font-size: 60px;
+            top: -10px;
+            position:relative;
+            color: #d7f9db;
+        }
+        .container .container1 .container2 .info2 .graph .dates{
+            position:absolute;
+            width:80%;
+            display: flex;
+            align-items: center;
+            transform: translateX(12px);
+            justify-content: center;
+            left: 9.3%;
+            color: #d7f9db;
+            bottom: 5%;
+            font-family: "Ubuntu", sans-serif;
+            font-size: 20px;
+        }
+        .container .container1 .container2 .info2 .graph .dates .dd{
+            width: 17.6%;
+        }
+        .container .container1 .container2 .info2 .correctq .corr1{
+            height: 100%;
+            width: 100%;
+            position:relative;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #79aa80 rgba(255, 255, 255, 0);
+        }
+        .container .container1 .container2 .info2 .correctq .corr1 .corr2{
+            position:absolute;
+            height: 400%;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container .container1 .container2 .info2 .correctq .corr1 .corr2 .QuesAna{
+            font-size: 65px;
+            padding: 0;
+            color: #d7f9db;
+            width: 85%;
+            font-family: "Ubuntu",sans-serif;
+            height: 5%;
+        }
+        .container .container1 .container2 .info2 .correctq .corr1 .corr2 .qq{
+            position:relative;
+            border-radius: 20px;
+            height: 17%;
+            background-image: linear-gradient(to bottom right,   #41f379, #79aa80a6);
+            width: 95%;
+        }
+        .container .container1 .container2 .info2 .correctq .corr1 .corr2 .q11l{
+            width: auto;
+            height: auto;
+            font-size: 50px;
+            position:absolute;
+            z-index: 2;
+            top: -20px;
+            color: #d7f9db;
+            font-family: "Ubuntu", sans-serif;
+            left: -20px;
+        }
+        .container .container1 .container2 .info2 .correctq .corr1 .corr2 .q11r{
+            width: auto;
+            height: auto;
+            font-size: 50px;
+            position:absolute;
+            top: -20px;
+            z-index: 2;
+            color: #d7f9db;
+            font-family: "Ubuntu", sans-serif;
+            right: -20px;
+        }
+        .container .container1 .container2 .info2 .correctq .corr1 .corr2 .ca11{
+            width: 90%;
+            position:absolute;
+            left: 2.50%;
+            padding: 2.5%;
+            border-bottom-left-radius: 20px;
+            font-family: "Ubuntu", sans-serif;
+            border-bottom-right-radius: 20px;
+            font-size: 20px;
+            color: #354573;
+            height: 60%;
+            top: 20%;
+            background-image: linear-gradient(to bottom, #d7f9db7c, rgba(255, 255, 255, 0.246));
+        }
+        .container .container1 .container2 .info2 .correctq .corr1 .corr2 .a11{
+            width: 90%;
+            position:absolute;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            left: 2.50%;
+            font-weight: 600;
+            color: #354573;
+            font-family: "Ubuntu", sans-serif;
+            font-size: 20px;
+            padding-left: 5%;
+            height: 10%;
+            top: 5%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            background-image: linear-gradient(to bottom, #d7f9db7c, rgba(255, 255, 255, 0.246));
+        }
+        form{
+            top: 0px;
+            position:absolute;
+            width: 100%;
+            z-index: 99;
+            height: 10px;
+        }
+        form button{
+            right: 20px;
+            padding-top: 10px;
+            cursor: pointer;
+            box-shadow: 5px 0 10px rgba(0, 0, 0, 0.575);
+            padding-bottom: 10px;
+            padding-left: 30px;
+            color: #354573;
+            font-size: 20px;
+            background-color: #41f379;
+            font-weight: 600;
+            border-radius: 20px;
+            border: 5px solid #354573;
+            padding-right: 30px;
+            position:absolute;
+        }
+        form button:hover{
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <form action="/home" method="POST">
+        <button type="submit">Back To Home Page</button>
+        <input type="text" class="cans" name="ans" style="display:none" value={{ans}}>
+        <input type="text" class="gen" style="display:none" value={{gender}}>
+        <input type="text" class="att" name="att" style="display:none" value={{att}}>
+        <input type="text" class="pts" name="pts" style="display:none" value={{pts}}>
+        <input type="text" class="date" name="date" style="display:none" value={{date}}>
+        <input type="text" class="quiz" name="quiz" style="display:none" value={{quizno}}>
+        <input type="text" class="usernameinv" name="usernameinv" style="display:none" value={{user}}>
+    </form>
+    <div class="container">
+        <div class="container1">
+            <div class="container2">
+                <div class="quizname">{{quizname}}</div>
+                <div class="info1">
+                    <div class="userinfo">
+                        <div class="circle"><i class="icon fas"></i></div>
+                        <div class="texthead">
+                            <div class="uname">
+                                <div class="head">{{user}}</div>
+                                <div class="text">{{name}}</div>
+                            </div>
+                            <div class="attempt">
+                                <div class="head">Attempt</div>
+                                <div class="text">{{att}}</div>
+                            </div>
+                            <div class="attemptl">
+                                <div class="head">Attempts Left</div>
+                                <div class="text">{{attemptl}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scoreinfo">
+                        <div class="st">
+                            <div class="score">
+                                <div class="head">Score</div>
+                            </div>
+                            <div class="result">
+                                <div class="right">
+                                    <div class="head1">Right Answers</div>
+                                    <div class="text righta"></div>
+                                </div>
+                                <div class="wrong">
+                                    <div class="head1">Wrong Answers</div>
+                                    <div class="text wronga"></div>
+                                </div>
+                            </div>
+                            <div class="ques-list">
+                                <span class="ques1 q">Q1</span>
+                                <span class="ques2 q">Q2</span>
+                                <span class="ques3 q">Q3</span>
+                                <span class="ques4 q">Q4</span>
+                                <span class="ques5 q">Q5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info2">
+                    <div class="graph">
+                        <div class="texxt">
+                            <div class="graphtext">Graph</div>
+                            <div class="analysis">
+                                <div class="min">
+                                    <div class="head">Minimum</div>
+                                    <div class="text">{{min}}</div>
+                                </div>
+                                <div class="max">
+                                    <div class="head">Maximum</div>
+                                    <div class="text">{{max}}</div>
+                                </div>
+                                <div class="avg">
+                                    <div class="head">Average</div>
+                                    <div class="text">{{ave}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="bar1 bb"></div>
+                            <div class="bar2 bb"></div>
+                            <div class="bar3 bb"></div>
+                            <div class="bar4 bb"></div>
+                            <div class="bar5 bb"></div>
+                        </div>
+                        <div class="para">Scores</div>
+                        <div class="dates">
+                            <div class="d1 dd"></div>
+                            <div class="d2 dd"></div>
+                            <div class="d3 dd"></div>
+                            <div class="d4 dd"></div>
+                            <div class="d5 dd"></div>
+                        </div>
+                    </div>
+                    <div class="correctq">
+                        <div class="corr1">
+                            <div class="corr2">
+                                <div class="QuesAna">Question Analysis</div>
+                                <div class="q1 qq">
+                                    <div class="q11l">Q1</div>
+                                    <div class="a11 rw1">{{chosen1}} - </div>
+                                    <div class="ca11"><b style="font-size: 20px">{{option1}}</b> - {{explained1}}</div>
+                                </div>
+                                <div class="q2 qq">
+                                    <div class="q11r">Q2</div>
+                                    <div class="a11 rw2">{{chosen2}} - </div>
+                                    <div class="ca11"><b style="font-size: 20px">{{option2}}</b> - {{explained2}}</div>
+                                </div>
+                                <div class="q3 qq">
+                                    <div class="q11l">Q3</div>
+                                    <div class="a11 rw3">{{chosen3}} - </div>
+                                    <div class="ca11"><b style="font-size: 20px">{{option3}}</b> - {{explained3}}</div>
+                                </div>
+                                <div class="q4 qq">
+                                    <div class="q11r">Q4</div>
+                                    <div class="a11 rw4">{{chosen4}} - </div>
+                                    <div class="ca11"><b style="font-size: 20px">{{option4}}</b> - {{explained4}}</div>
+                                </div>
+                                <div class="q5 qq">
+                                    <div class="q11l">Q5</div>
+                                    <div class="a11 rw5">{{chosen5}} - </div>
+                                    <div class="ca11"><b style="font-size: 20px">{{option5}}</b> - {{explained5}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var b = $(".cans").val(), cor=0;
+        var da = $(".date").val();
+        da = da.split(",");
+        for(let i=0;i<da.length; i++){
+            $(`d${i+1}`).empty();
+            $(`.d${i+1}`).append(da[i]);
+        }
+        var c = $(".att").val();
+        var d = $(".pts").val();
+        c = parseInt(c);
+        for(let i=0; i<5; i++){
+            if(b[i] == 'n'){
+                $(`.ques${i+1}`).addClass("w");
+                $(`.rw${i+1}`).append("question left");
+                continue;
+            }
+            if(b[i] != b[i+5]){
+                $(`.ques${i+1}`).addClass("w");
+                $(`.rw${i+1}`).append("wrong answer");
+            }else{
+                $(`.ques${i+1}`).addClass("r");
+                $(`.rw${i+1}`).append("right answer");
+                cor++;
+            }
+        }
+        $(".righta").append(`${cor}`);
+        $(".wronga").append(`${5-cor}`);
+        for(let i=1; i<c; i++){
+            $(`.bar${i}`).css("height",`${parseInt(d[i-1])*20}%`);
+            $(`.bar${i}`).empty();
+            $(`.bar${i}`).append(d[i-1]);
+        }
+        $(`.bar${c}`).css("height",`${cor*20}%`);
+        $(`.bar${c}`).append(cor);
+        var ge = $(".gen").val();
+        console.log(ge);
+        if(ge == "Male"){
+            $(".icon").addClass("fa-male");
+            $(".circle").css("color","#354573d4");
+        }
+        else if(ge == "Others"){
+            $(".icon").addClass("fa-transgender-alt");
+            $(".circle").css("color","#c62ff7d4");
+        }
+        else{
+            $(".icon").addClass("fa-female");
+            $(".circle").css("color","#FF5733d4");
+        }
+    </script>
+</body>
+</html>

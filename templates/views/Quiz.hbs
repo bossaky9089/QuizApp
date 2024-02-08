@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{Document}}</title>
+    <style>
+        *{
+            padding: 0;
+            user-select: none;
+            font-family: "Ubuntu", sans-serif;
+            margin: 0;
+        }
+        .fadenum{
+            animation: aad 1s ease;
+        }
+        @keyframes aad {
+            to{
+                font-size: 100px;
+                opacity: 0;
+            }
+            from{
+                font-size: 80px;
+                opacity: 1;
+            }
+        }
+        .background, .backside{
+            height: 100vh;
+            width: 100%;
+            /* overflow: hidden; */
+            position:absolute;
+        }
+        .background{
+            background-color: #354573;
+        }
+        .backside{
+            background: none;
+            z-index: 9;
+            animation: pic2 3s 3s ease forwards;
+            opacity: 0;
+        }
+        @keyframes pic2 {
+            0%{
+                opacity: 0;
+                pointer-events: none;
+            }
+            100%{
+                pointer-events: all;
+                opacity: 1;
+            }
+        }
+        .background .picture1{
+            top: 0;
+            position: absolute;
+            background-color:  #3545737a;
+            background-blend-mode: soft-light;
+            opacity: 0;
+            height: 100vh;
+            width: 100%;
+            filter: blur(3px);
+            z-index: 1;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            animation: pic1 3s 3s ease forwards;
+        }
+        .backside .quiz-port{
+            background-image: linear-gradient(to bottom right, #41f379ab, #41f37969);
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.644);
+            backdrop-filter: blur(5px);
+            width: 85%;
+            height: 70%;
+            overflow: hidden;
+            top: 15%;
+            pointer-events: all;
+            left: 7.5%;
+            opacity: 1;
+            position:relative;
+            border-radius: 30px;
+        }
+        .backside .quiz-port .container .ques{
+            height: 45%;
+            position:absolute;
+            width: 96%;
+            left: 2%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            top: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #41f379;
+        }
+        .opt{
+            display: none;
+        }
+        .text1, .text11, .text111, .text1111, .text11111{
+            height: 70px;
+            width: 47%;
+            left: 2.0%;
+            text-align: center;
+            cursor:pointer;
+            display: flex;
+            top: 55%;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            position:absolute;
+            background-color: #41f379;
+        }
+        .tt{
+            z-index: 3;
+        }
+        .text1 .line1, .text2 .line11, .text3 .line111, .text4 .line1111{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: #354573;
+        }
+        .text1 .line2, .text2 .line22, .text3 .line222, .text4 .line2222{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: #354573;
+        }
+        .text1 .line3, .text2 .line33, .text3 .line333, .text4 .line3333{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #354573;
+        }
+        .text1 .line4, .text2 .line44, .text3 .line444, .text4 .line4444{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #354573;
+        }
+
+
+        .text11 .line1q, .text22 .line11q, .text33 .line111q, .text44 .line1111q{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: #354573;
+        }
+        .text11 .line2q, .text22 .line22q, .text33 .line222q, .text44 .line2222q{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: #354573;
+        }
+        .text11 .line3q, .text22 .line33q, .text33 .line333q, .text44 .line3333q{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #354573;
+        }
+        .text11 .line4q, .text22 .line44q, .text33 .line444q, .text44 .line4444q{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #354573;
+        }
+
+        .text111 .line1qq, .text222 .line11qq, .text333 .line111qq, .text444 .line1111qq{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: #354573;
+        }
+        .text111 .line2qq, .text222 .line22qq, .text333 .line222qq, .text444 .line2222qq{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: #354573;
+        }
+        .text111 .line3qq, .text222 .line33qq, .text333 .line333qq, .text444 .line3333qq{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #354573;
+        }
+        .text111 .line4qq, .text222 .line44qq, .text333 .line444qq, .text444 .line4444qq{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #354573;
+        }
+
+
+        .text1111 .line1qqq, .text2222 .line11qqq, .text3333 .line111qqq, .text4444 .line1111qqq{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: #354573;
+        }
+        .text1111 .line2qqq, .text2222 .line22qqq, .text3333 .line222qqq, .text4444 .line2222qqq{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: #354573;
+        }
+        .text1111 .line3qqq, .text2222 .line33qqq, .text3333 .line333qqq, .text4444 .line3333qqq{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #354573;
+        }
+        .text1111 .line4qqq, .text2222 .line44qqq, .text3333 .line444qqq, .text4444 .line4444qqq{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #354573;
+        }
+
+
+        .text11111 .line1qqqq, .text22222 .line11qqqq, .text33333 .line111qqqq{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: #354573;
+        }
+        .text11111 .line2qqqq, .text22222 .line22qqqq, .text33333 .line222qqqq, .text4444{
+            height: 0%;
+            width: 10px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: #354573;
+        }
+        .text11111 .line3qqqq, .text22222 .line33qqqq, .text33333 .line333qqqq{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #354573;
+        }
+        .text11111 .line4qqqq, .text22222 .line44qqqq, .text33333 .line444qqqq, .text44444 .line4444qqqq{
+            height: 10px;
+            width: 0%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #354573;
+        }
+        @keyframes line1 {
+            to{
+                height: 100%;
+            }
+            from{
+                height: 0;
+            }
+        }
+        @keyframes line2 {
+            to{
+                width: 100%;
+            }
+            from{
+                width: 0;
+            }
+        }
+        .line1e{
+            animation: line1 .5s ease forwards;
+        }
+        .line2e{
+            animation: line1 .5s 1s ease forwards;
+        }
+        .line3e{
+            animation: line2 .5s .5s ease forwards;
+        }
+        .line4e{
+            animation: line2 .5s 1.5s ease forwards;
+        }
+        
+        .text2, .text22, .text222, .text2222, .text22222{
+            height: 70px;
+            width: 47%;
+            right: 2%;
+            top: 55%;
+            text-align: center;
+            cursor:pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position:absolute;
+            background-color: #41f379;
+        }
+        .text3, .text33, .text333, .text3333, .text33333{
+            height: 70px;
+            width: 47%;
+            text-align: center;
+            right: 2%;
+            top: 55%;
+            cursor:pointer;
+            margin-top: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position:absolute;
+            background-color: #41f379;
+        }
+        .text4, .text44, .text444, .text4444, .text44444{
+            height: 70px;
+            cursor: pointer;
+            width: 47%;
+            text-align: center;
+            left: 2%;
+            margin-top: 90px;
+            top: 55%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position:absolute;
+            background-color: #41f379;
+        }
+        .clear{
+            position:absolute;
+            background-color: #41f379;
+            height: 30px;
+            width: 150px;
+            cursor: pointer;
+            font-weight: 500;
+            color:#354573;
+            z-index: 9;
+            border: solid #354573 3px;
+            left: 7.5%;
+            align-items: center;
+            display: flex;
+            transform: translate(200px, 20px);
+            justify-content: center;
+            border-radius: 18px;
+            bottom: 15%;
+        }
+        .submit{
+            position:absolute;
+            background-color: #41f379;
+            height: 30px;
+            width: 150px;
+            transform: translate(40px, 20px);
+            z-index: 9;
+            cursor: pointer;
+            font-weight: 500;
+            bottom: 15%;
+            color:#354573;
+            border: solid #354573 3px;
+            left: 7.5%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            border-radius: 18px;
+        }
+        .clear:hover, .submit:hover{
+            color: #41f379;
+            border-color: #41f379;
+            background-color: #354573;
+        }
+        .container{
+            position:absolute;
+            top:0;
+            width: 100%;
+            height: 100%;
+        }
+        .container2{
+            height: 100%;
+            width: 100%;
+            top: 0;
+            position: absolute;
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+        }
+        .container .question1, .container .question2, .container .question3, .container .question4, .container .question5{
+            position:absolute;
+            top: 0;
+            transition: all .5s ease;
+            height: 100%;
+            width: 100%;
+        }
+    
+        .Timer{
+            position:absolute;
+            height: 200px;
+            font-family: "Ubuntu", sans-serif;
+            width: 300px;
+            pointer-events: none;
+            border-radius: 40px;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate(-50%,-50%);
+            background-color: #79aa80;
+            z-index: 98;
+            animation: displayy 3.01s forwards linear;
+        }
+        @keyframes pic1 {
+            to{
+                opacity: 1;
+            }
+            from{
+                opacity: 0;
+            }
+        }
+        @keyframes displayy {
+            0%, 99.99%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+        .minset{
+            height: 100px; 
+            width: 100px;
+            position: absolute;
+            border: 10px solid ;
+            background-color: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(30px);
+            right: 20px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 20px;
+            font-size: 50px;
+            z-index: 10;
+            border-radius: 50%;
+        }
+        .done{
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            background-color: #0000008a;
+            backdrop-filter: blur(5px);
+            z-index: 12;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 200px;
+        }
+        .doneo{
+            display: none;
+        }
+        .done .dd{
+            position: relative;
+            top: -170px;
+            color: #d7f9db;
+        }
+        .done form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .done button{
+            height: 100px;
+            cursor: pointer;
+            border-radius: 40px;
+            background-color: #41f379;
+            color: #354573;
+            font-weight: 600;
+            font-size: 50px;
+            border: 5px solid #354573;
+            width: 30%;
+            position: absolute;
+        }
+        .done button:hover{
+            border: 5px solid #41f379;
+            background-color: #354573;
+            color: #41f379;
+        }
+    </style>
+</head>
+<body>
+    <div class="Timer"></div>
+    <div class="minset doneo"></div>
+    <div class="done doneo">
+        <span class="dd">Done!!</span>
+        <form action="/scores" method="post">
+            <button type="submit">Finish attempt</button>
+            <input type="text" name="answers" class="ans" style="display: none">
+            <input type="text" name="quiz" class="quiz" value={{quizno}} style="display: none">
+
+            <input type="text" name="user" class="usernameinv" style="display:none" value={{user}}>
+        </form>
+    </div>
+    <div class="background">
+        <input type="text" value={{back}} style="display:none" class="backsidepic" name="user">;
+        <input type="text" value={{name}} style="display:none" class="backsidepic" name="name">;
+        <div class="picture1"></div>
+    </div>
+    <div class="backside">
+        <div class="submit">Submit Selection</div>
+        <div class="clear">Clear Selection</div>
+        <div class="quiz-port">
+            <div class="container">
+                <div class="container2">
+                    <div class="question1 qq">
+                        <div class="ques">{{question1}}</div>
+                <div class="options">
+                    <input type="radio" name="ques1" value="a" id="o1" class="opt"><label for="o1" class="optex"><div class="text1"><span class="tt">{{op11}}</span> 
+                        <div class="line1 p"></div>
+                        <div class="line2 p"></div>
+                        <div class="line3 p"></div>
+                        <div class="line4 p"></div>
+                    </div></label>
+                    <input type="radio" name="ques1" value="b" id="o2" class="opt"><label for="o2" class="optex"><div class="text2"><span class="tt">{{op12}}</span>
+                        <div class="line11 p"></div>
+                        <div class="line22 p"></div>
+                        <div class="line33 p"></div>
+                        <div class="line44 p"></div>
+                    </div></label>
+                    <input type="radio" name="ques1" value="c" id="o3" class="opt"><label for="o4" class="optex"><div class="text3"><span class="tt">{{op14}}</span>
+                        <div class="line111 p"></div>
+                        <div class="line222 p"></div>
+                        <div class="line333 p"></div>
+                        <div class="line444 p"></div>
+                    </div></label>
+                    <input type="radio" name="ques1" value="d" id="o4" class="opt"><label for="o3" class="optex"><div class="text4"><span class="tt">{{op13}}</span>
+                        <div class="line1111 p"></div>
+                        <div class="line2222 p"></div>
+                        <div class="line3333 p"></div>
+                        <div class="line4444 p"></div>
+                    </div></label>
+                </div>
+                    </div>
+    
+    
+    
+                    <div class="question2 qq">
+                        <div class="ques">{{question2}}</div>
+                <div class="options">
+                    <input type="radio" name="ques2" value="a" id="o1l" class="opt"><label for="o1l" class="optex"><div class="text11"><span class="tt">{{op21}}</span> 
+                        <div class="line1q pp"></div>
+                        <div class="line2q pp"></div>
+                        <div class="line3q pp"></div>
+                        <div class="line4q pp"></div>
+                    </div></label>
+                    <input type="radio" name="ques2" value="b" id="o2l" class="opt"><label for="o2l" class="optex"><div class="text22"><span class="tt">{{op22}}</span>
+                        <div class="line11q pp"></div>
+                        <div class="line22q pp"></div>
+                        <div class="line33q pp"></div>
+                        <div class="line44q pp"></div>
+                    </div></label>
+                    <input type="radio" name="ques2" value="c" id="o3l" class="opt"><label for="o4l" class="optex"><div class="text33"><span class="tt">{{op24}}</span>
+                        <div class="line111q pp"></div>
+                        <div class="line222q pp"></div>
+                        <div class="line333q pp"></div>
+                        <div class="line444q pp"></div>
+                    </div></label>
+                    <input type="radio" name="ques2" value="d" id="o4l" class="opt"><label for="o3l" class="optex"><div class="text44"><span class="tt">{{op23}}</span>
+                        <div class="line1111q pp"></div>
+                        <div class="line2222q pp"></div>
+                        <div class="line3333q pp"></div>
+                        <div class="line4444q pp"></div>
+                    </div></label>
+                </div>
+                    </div>
+    
+    
+    
+                    <div class="question3 qq">
+                        <div class="ques">{{question3}}</div>
+                <div class="options">
+                    <input type="radio" name="ques3" value="a" id="o1ll" class="opt"><label for="o1ll" class="optex"><div class="text111"><span class="tt">{{op31}}</span> 
+                        <div class="line1qq ppp"></div>
+                        <div class="line2qq ppp"></div>
+                        <div class="line3qq ppp"></div>
+                        <div class="line4qq ppp"></div>
+                    </div></label>
+                    <input type="radio" name="ques3" value="b" id="o2ll" class="opt"><label for="o2ll" class="optex"><div class="text222"><span class="tt">{{op32}}</span>
+                        <div class="line11qq ppp"></div>
+                        <div class="line22qq ppp"></div>
+                        <div class="line33qq ppp"></div>
+                        <div class="line44qq ppp"></div>
+                    </div></label>
+                    <input type="radio" name="ques3" value="c" id="o3ll" class="opt"><label for="o4ll" class="optex"><div class="text333"><span class="tt">{{op34}}</span>
+                        <div class="line111qq ppp"></div>
+                        <div class="line222qq ppp"></div>
+                        <div class="line333qq ppp"></div>
+                        <div class="line444qq ppp"></div>
+                    </div></label>
+                    <input type="radio" name="ques3" value="d" id="o4ll" class="opt"><label for="o3ll" class="optex"><div class="text444"><span class="tt">{{op33}}</span>
+                        <div class="line1111qq ppp"></div>
+                        <div class="line2222qq ppp"></div>
+                        <div class="line3333qq ppp"></div>
+                        <div class="line4444qq ppp"></div>
+                    </div></label>
+                </div>
+                    </div>
+    
+    
+    
+                    <div class="question4 qq">
+                        <div class="ques">{{question4}}</div>
+                <div class="options">
+                    <input type="radio" name="ques4" value="a" id="o1lll" class="opt"><label for="o1lll" class="optex"><div class="text1111"><span class="tt">{{op41}}</span> 
+                        <div class="line1qqq pppp"></div>
+                        <div class="line2qqq pppp"></div>
+                        <div class="line3qqq pppp"></div>
+                        <div class="line4qqq pppp"></div>
+                    </div></label>
+                    <input type="radio" name="ques4" value="b" id="o2lll" class="opt"><label for="o2lll" class="optex"><div class="text2222"><span class="tt">{{op42}}</span>
+                        <div class="line11qqq pppp"></div>
+                        <div class="line22qqq pppp"></div>
+                        <div class="line33qqq pppp"></div>
+                        <div class="line44qqq pppp"></div>
+                    </div></label>
+                    <input type="radio" name="ques4" value="c" id="o3lll" class="opt"><label for="o4lll" class="optex"><div class="text3333"><span class="tt">{{op44}}</span>
+                        <div class="line111qqq pppp"></div>
+                        <div class="line222qqq pppp"></div>
+                        <div class="line333qqq pppp"></div>
+                        <div class="line444qqq pppp"></div>
+                    </div></label>
+                    <input type="radio" name="ques4" value="d" id="o4lll" class="opt"><label for="o3lll" class="optex"><div class="text4444"><span class="tt">{{op43}}</span>
+                        <div class="line1111qqq pppp"></div>
+                        <div class="line2222qqq pppp"></div>
+                        <div class="line3333qqq pppp"></div>
+                        <div class="line4444qqq pppp"></div>
+                    </div></label>
+                </div>
+                    </div>
+    
+    
+    
+                    <div class="question5 qq">
+                        <div class="ques">{{question5}}</div>
+                <div class="options">
+                    <input type="radio" name="ques5" value="a" id="o1llll" class="opt"><label for="o1llll" class="optex"><div class="text11111"><span class="tt">{{op51}}</span> 
+                        <div class="line1qqqq ppppp"></div>
+                        <div class="line2qqqq ppppp"></div>
+                        <div class="line3qqqq ppppp"></div>
+                        <div class="line4qqqq ppppp"></div>
+                    </div></label>
+                    <input type="radio" name="ques5" value="b" id="o2llll" class="opt"><label for="o2llll" class="optex"><div class="text22222"><span class="tt">{{op52}}</span>
+                        <div class="line11qqqq ppppp"></div>
+                        <div class="line22qqqq ppppp"></div>
+                        <div class="line33qqqq ppppp"></div>
+                        <div class="line44qqqq ppppp"></div>
+                    </div></label>
+                    <input type="radio" name="ques5" value="c" id="o3llll" class="opt"><label for="o4llll" class="optex"><div class="text33333"><span class="tt">{{op54}}</span>
+                        <div class="line111qqqq ppppp"></div>
+                        <div class="line222qqqq ppppp"></div>
+                        <div class="line333qqqq ppppp"></div>
+                        <div class="line444qqqq ppppp"></div>
+                    </div></label>
+                    <input type="radio" name="ques5" value="d" id="o4llll" class="opt"><label for="o3llll" class="optex"><div class="text44444"><span class="tt">{{op53}}</span>
+                        <div class="line1111qqqq ppppp" style="height: 0%;width: 10px;position: absolute;left: 0;bottom: 0;background-color: #354573;"></div>
+                        <div class="line2222qqqq ppppp" style="height: 0%;width: 10px;position: absolute;right: 0;top: 0;background-color: #354573;"></div>
+                        <div class="line3333qqqq ppppp" style="height: 10px;width: 0%;position: absolute;top: 0;left: 0;background-color: #354573;"></div>
+                        <div class="line4444qqqq ppppp"></div>
+                    </div></label>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var aabbcc = $(".backsidepic").val();
+        $(".picture1").css("background-image",`url(${aabbcc})`);
+        $("window").ready(function(){
+            let i=0, j=2, z=100, p=1;
+            $(".qq").css("z-index", 1);
+            $(".question1").css("z-index", `3`);
+            $(".minset").css("color", "#41f379");
+        setTimeout(function next() {
+            $(".Timer").empty();
+            $(".Timer").append(`<div class="fadenum">${++i}</div>`);
+            if(i < 3) setTimeout(next, 1000);
+        });
+        setTimeout(function next(){
+            $(".minset").removeClass("doneo");
+            $(".minset").empty();
+            $(".minset").append(z--);
+            if(z >= 30){
+                $(".minset").css("color", "#41f379");
+                $(".minset").css("border-color", "#41f379");
+            }
+            else if(z >= 10){
+                $(".minset").css("color", "#f72119");
+                $(".minset").css("border-color", "#f72119");
+            }
+            else{
+                $(".minset").css("color", "#c51913");
+                $(".minset").css("border-color", "#c51913");
+            }
+            if(z >= 0 && p <= 5) setTimeout(next, 1000);
+            else{
+                $(".done").removeClass("doneo");
+            }
+
+        }, 3000);
+        // setTimeout(function next() {
+        //     $(".Timer").empty();
+        //     $(".Timer").append(`<div class="fadenum">${++i}</div>`);
+        //     if(i < 3) setTimeout(next, 1000);
+        // }, 3000);
+        
+        $("input[name=ques1]:checked").prop("checked", false);
+        $("input[name=ques2]:checked").prop("checked", false);
+        $("input[name=ques3]:checked").prop("checked", false);
+        $("input[name=ques4]:checked").prop("checked", false);
+        $("input[name=ques5]:checked").prop("checked", false);
+        $(".clear").click(function(){
+            switch(p){
+                case 1:
+                $(`input[name=ques1]:checked`).prop("checked", false);
+                break;
+
+                case 2:
+                $(`input[name=ques2]:checked`).prop("checked", false);
+                break;
+
+                case 3:
+                $(`input[name=ques3]:checked`).prop("checked", false);
+                break;
+
+                case 4:
+                $(`input[name=ques4]:checked`).prop("checked", false);
+                break;
+
+                case 5:
+                $(`input[name=ques5]:checked`).prop("checked", false);
+                break;
+
+            }
+            var zz='.';
+            for(let i=0; i<p; i++){
+                zz += 'p';
+            }
+            $(zz).removeClass("line1e");
+            $(zz).removeClass("line2e");
+            $(zz).removeClass("line3e");
+            $(zz).removeClass("line4e");
+        });
+        $(".text1").click(function(){
+            $(".p").removeClass("line1e");
+            $(".p").removeClass("line2e");
+            $(".p").removeClass("line3e");
+            $(".p").removeClass("line4e");
+            $(".line1").addClass("line1e");
+            $(".line2").addClass("line2e");
+            $(".line3").addClass("line3e");
+            $(".line4").addClass("line4e");
+        });
+        $(".text2").click(function(){
+            $(".p").removeClass("line1e");
+            $(".p").removeClass("line2e");
+            $(".p").removeClass("line3e");
+            $(".p").removeClass("line4e");
+            $(".line11").addClass("line1e");
+            $(".line22").addClass("line2e");
+            $(".line33").addClass("line3e");
+            $(".line44").addClass("line4e");
+        });
+        $(".text3").click(function(){
+            $(".p").removeClass("line1e");
+            $(".p").removeClass("line2e");
+            $(".p").removeClass("line3e");
+            $(".p").removeClass("line4e");
+            $(".line111").addClass("line1e");
+            $(".line222").addClass("line2e");
+            $(".line333").addClass("line3e");
+            $(".line444").addClass("line4e");
+        });
+        $(".text4").click(function(){
+            $(".p").removeClass("line1e");
+            $(".p").removeClass("line2e");
+            $(".p").removeClass("line3e");
+            $(".p").removeClass("line4e");
+            $(".line1111").addClass("line1e");
+            $(".line2222").addClass("line2e");
+            $(".line3333").addClass("line3e");
+            $(".line4444").addClass("line4e");
+        });
+        
+        $(".text11").click(function(){
+            $(".pp").removeClass("line1e");
+            $(".pp").removeClass("line2e");
+            $(".pp").removeClass("line3e");
+            $(".pp").removeClass("line4e");
+            $(".line1q").addClass("line1e");
+            $(".line2q").addClass("line2e");
+            $(".line3q").addClass("line3e");
+            $(".line4q").addClass("line4e");
+        });
+        $(".text22").click(function(){
+            $(".pp").removeClass("line1e");
+            $(".pp").removeClass("line2e");
+            $(".pp").removeClass("line3e");
+            $(".pp").removeClass("line4e");
+            $(".line11q").addClass("line1e");
+            $(".line22q").addClass("line2e");
+            $(".line33q").addClass("line3e");
+            $(".line44q").addClass("line4e");
+        });
+        $(".text33").click(function(){
+            $(".pp").removeClass("line1e");
+            $(".pp").removeClass("line2e");
+            $(".pp").removeClass("line3e");
+            $(".pp").removeClass("line4e");
+            $(".line111q").addClass("line1e");
+            $(".line222q").addClass("line2e");
+            $(".line333q").addClass("line3e");
+            $(".line444q").addClass("line4e");
+        });
+        $(".text44").click(function(){
+            $(".pp").removeClass("line1e");
+            $(".pp").removeClass("line2e");
+            $(".pp").removeClass("line3e");
+            $(".pp").removeClass("line4e");
+            $(".line1111q").addClass("line1e");
+            $(".line2222q").addClass("line2e");
+            $(".line3333q").addClass("line3e");
+            $(".line4444q").addClass("line4e");
+        });
+        
+        
+        $(".text111").click(function(){
+            $(".ppp").removeClass("line1e");
+            $(".ppp").removeClass("line2e");
+            $(".ppp").removeClass("line3e");
+            $(".ppp").removeClass("line4e");
+            $(".line1qq").addClass("line1e");
+            $(".line2qq").addClass("line2e");
+            $(".line3qq").addClass("line3e");
+            $(".line4qq").addClass("line4e");
+        });
+        $(".text222").click(function(){
+            $(".ppp").removeClass("line1e");
+            $(".ppp").removeClass("line2e");
+            $(".ppp").removeClass("line3e");
+            $(".ppp").removeClass("line4e");
+            $(".line11qq").addClass("line1e");
+            $(".line22qq").addClass("line2e");
+            $(".line33qq").addClass("line3e");
+            $(".line44qq").addClass("line4e");
+        });
+        $(".text333").click(function(){
+            $(".ppp").removeClass("line1e");
+            $(".ppp").removeClass("line2e");
+            $(".ppp").removeClass("line3e");
+            $(".ppp").removeClass("line4e");
+            $(".line111qq").addClass("line1e");
+            $(".line222qq").addClass("line2e");
+            $(".line333qq").addClass("line3e");
+            $(".line444qq").addClass("line4e");
+        });
+        $(".text444").click(function(){
+            $(".ppp").removeClass("line1e");
+            $(".ppp").removeClass("line2e");
+            $(".ppp").removeClass("line3e");
+            $(".ppp").removeClass("line4e");
+            $(".line1111qq").addClass("line1e");
+            $(".line2222qq").addClass("line2e");
+            $(".line3333qq").addClass("line3e");
+            $(".line4444qq").addClass("line4e");
+        });
+        
+
+        $(".text1111").click(function(){
+            $(".pppp").removeClass("line1e");
+            $(".pppp").removeClass("line2e");
+            $(".pppp").removeClass("line3e");
+            $(".pppp").removeClass("line4e");
+            $(".line1qqq").addClass("line1e");
+            $(".line2qqq").addClass("line2e");
+            $(".line3qqq").addClass("line3e");
+            $(".line4qqq").addClass("line4e");
+        });
+        $(".text2222").click(function(){
+            $(".pppp").removeClass("line1e");
+            $(".pppp").removeClass("line2e");
+            $(".pppp").removeClass("line3e");
+            $(".pppp").removeClass("line4e");
+            $(".line11qqq").addClass("line1e");
+            $(".line22qqq").addClass("line2e");
+            $(".line33qqq").addClass("line3e");
+            $(".line44qqq").addClass("line4e");
+        });
+        $(".text3333").click(function(){
+            $(".pppp").removeClass("line1e");
+            $(".pppp").removeClass("line2e");
+            $(".pppp").removeClass("line3e");
+            $(".pppp").removeClass("line4e");
+            $(".line111qqq").addClass("line1e");
+            $(".line222qqq").addClass("line2e");
+            $(".line333qqq").addClass("line3e");
+            $(".line444qqq").addClass("line4e");
+        });
+        $(".text4444").click(function(){
+            $(".pppp").removeClass("line1e");
+            $(".pppp").removeClass("line2e");
+            $(".pppp").removeClass("line3e");
+            $(".pppp").removeClass("line4e");
+            $(".line1111qqq").addClass("line1e");
+            $(".line2222qqq").addClass("line2e");
+            $(".line3333qqq").addClass("line3e");
+            $(".line4444qqq").addClass("line4e");
+        });
+        
+
+
+        $(".text11111").click(function(){
+            $(".ppppp").removeClass("line1e");
+            $(".ppppp").removeClass("line2e");
+            $(".ppppp").removeClass("line3e");
+            $(".ppppp").removeClass("line4e");
+            $(".line1qqqq").addClass("line1e");
+            $(".line2qqqq").addClass("line2e");
+            $(".line3qqqq").addClass("line3e");
+            $(".line4qqqq").addClass("line4e");
+        });
+        $(".text22222").click(function(){
+            $(".ppppp").removeClass("line1e");
+            $(".ppppp").removeClass("line2e");
+            $(".ppppp").removeClass("line3e");
+            $(".ppppp").removeClass("line4e");
+            $(".line11qqqq").addClass("line1e");
+            $(".line22qqqq").addClass("line2e");
+            $(".line33qqqq").addClass("line3e");
+            $(".line44qqqq").addClass("line4e");
+        });
+        $(".text33333").click(function(){
+            $(".ppppp").removeClass("line1e");
+            $(".ppppp").removeClass("line2e");
+            $(".ppppp").removeClass("line3e");
+            $(".ppppp").removeClass("line4e");
+            $(".line111qqqq").addClass("line1e");
+            $(".line222qqqq").addClass("line2e");
+            $(".line333qqqq").addClass("line3e");
+            $(".line444qqqq").addClass("line4e");
+        });
+        $(".text44444").click(function(){
+            $(".ppppp").removeClass("line1e");
+            $(".ppppp").removeClass("line2e");
+            $(".ppppp").removeClass("line3e");
+            $(".ppppp").removeClass("line4e");
+            $(".line1111qqqq").addClass("line1e");
+            $(".line2222qqqq").addClass("line2e");
+            $(".line3333qqqq").addClass("line3e");
+            $(".line4444qqqq").addClass("line4e");
+        });
+        
+        
+        var pppp = '';
+        $(".submit").click(function(){
+            $(".qq").css("z-index", "1");
+            if($(`input[name=ques${p}]:checked`).val() != undefined)$(".ans").val($(".ans").val()+$(`input[name=ques${p}]:checked`).val());
+            else $(".ans").val($(".ans").val()+"n");
+            var nn = `.question${j}`;
+            $(nn).css("z-index", "3");
+            
+            if(j < 5){
+                 j++;
+                 p++;
+            }
+            else if(j == 5){
+                j++;
+                p++;
+                $(".submit").empty();
+                $(".submit").append("finish attempt");
+            }
+            else if(j>5){
+                p++;
+                $(".done").removeClass("doneo");
+            }
+        });
+    });
+//         $(document).ready(function(){
+//       while(true){
+//         setTimeout(function(){
+//           alert("This is the alert message for timer");
+//       }, 5000);
+//       }
+//  })
+// setTimeout(function next() {
+
+// // Do something...
+// alert("lsjdlkjldk");
+// // Have the function set another timeout to call itself later.
+// setTimeout(next, 5000);
+
+// }, 10);
+    </script>
+</body>
+</html>

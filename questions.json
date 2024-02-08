@@ -1,0 +1,162 @@
+[
+    {
+        
+    "ques1":"Amarbel is an exmaple of",
+        "options1":{"op1":"Autotroph",
+            "op2":"Parasite",
+            "op3":"Saprotroph",
+            "op4":"Host"},
+    "ques2":"A spore producing plant is",
+        "options2":{"op1":"rose",
+            "op2":"bread mould",
+            "op3":"potato",
+            "op4":"ginger"},
+    "ques3":"Transpiration is regulated by the movements of",
+        "options3":{
+            "op1":"Parenchyma cells",
+            "op2":"Gaurd cells",
+            "op3":"Epithelial cells",
+            "op4":"None of the above"
+        },
+    "ques4":"Living cells placed in an isotonic solution tend to retain their shape and size. This is based on the principle of",
+        "options4":{
+            "op1":"Diffusion",
+            "op2":"Transpiration",
+            "op3":"Osmosis",
+            "op4":"None of the above"
+        },
+    "ques5":"Transport of food materials in higher plants occurs through",
+        "options5":{
+            "op1":"Flowers",
+            "op2":"Companion cells",
+            "op3":"Tracheids",
+            "op4":"Sieve elements"
+        },
+    "answers": "bbbcd",
+    "first":"Amarbel is an example of the parasite. Cuscuta reflexa is the botanical name for the amarbel. It is also known as giant dodder. It grows in a creative manner over host plants and this species has the capability of producing numerous branches within a short period of time.",
+    "second":"Bread mould or Rhizopus is a similar sort of fungus. During asexual propagation, inside the sporangium the mould produces spores, and the spores reproduce inside it. When the sporangium cracks, open and all spores inside will drift out. The spores land on a point where they can transform into a new form, and start to grow. Therefore, this is the correct answer.",
+    "third":"Transpiration is regulated by movement of guard cell. The guard cells contain chloroplasts, so they can manufacture food by photosynthesis. The epidermal cells don't have chloroplast. Due to the presence of chloroplast, guard cell synthesizes glucose during the day time by the process of photosynthesis and so its osmotic potential increases and it withdraws water from the epidermal cell and turns turgid and the stomata opens and transpiration takes place. At night, when there is no light the amount of solute decreases in guard cell which leads to fall in its osmotic potential. The guard cell loses water and turns flaccid and the stomata closes, so the transpiration stops.",
+    "fourth":"When living cells are placed in isotonic solution, they retain their shape and size as such because no osmotic movement of water molecules takes place. If a plant cell is placed in hypertonic solution, the cell gets plasmolysed due to exosmosis. On the other hand, if a plasmolysed cell is placed in hypotonic solution, endosmosis occurs and the cell gets deplasmolysed.",
+    "fifth":"Sieve elements are made of sieve cells. They are the components of phloem tissue and transport food material in plants. Sieve element in angiosperms are sieve tubes and companion cells. While in gymnosperms and pteridophytes they sieve cells."
+    },
+    {
+        
+    "ques1":"Which cell organelle is also called powerhouse of the cell?",
+        "options1":{"op1":"Ribosome",
+            "op2":"Endoplasmic reticulum",
+            "op3":"Cytoplasm",
+            "op4":"Mitochondria"},
+    "ques2":"A lion is most closely related to which of the following animals?",
+        "options2":{"op1":"Dog",
+            "op2":"Raccoon",
+            "op3":"Wolf",
+            "op4":"Leopard"},
+    "ques3":"What elements are the most common in the human body?",
+        "options3":{
+            "op1":"Sulfur, sodium, magnesium",
+            "op2":"Phosphorus, nitrogen, calcium",
+            "op3":"Copper, zinc, selenium",
+            "op4":"Oxygen, carbon, hydrogen"
+        },
+    "ques4":"A trait in an organism is influenced by",
+        "options4":{
+            "op1":"paternal DNA only",
+            "op2":"maternal DNA only",
+            "op3":"both maternal and paternal DNA",
+            "op4":"neither by paternal nor by maternal DNA"
+        },
+    "ques5":"Project Tiger was launched on",
+        "options5":{
+            "op1":"1 april 1973",
+            "op2":"23 may 1973",
+            "op3":"21 september 1973",
+            "op4":"25 december 1973"
+        },
+    "answers": "dddca",
+    "first":"Mitochondria are tiny organelles inside cells that are involved in releasing energy from food. This process is known as cellular respiration. It is for this reason that mitochondria are often referred to as the powerhouses of the cell.",
+    "second":"DNA studies suggest that lion is more related to a leopard than any other of the options, but those three species are related to each other than a tiger or snow leopard pair or cheetah and mountion lion pair which are paired being related.",
+    "third":"Many elements make up the human body, but only three occur in abundance. These elements, oxygen, carbon, and hydrogen, combine to form the constituents of some of the most essential processes in the human body, such as cellular respiration.",
+    "fourth":"Traits refers to inherent characteristics of an organism that is transferred from one generation to another. These traits are carried with the genes which are units of heredity. Genes are composed of DNA as the genetic material. Both parents contribute equally for genetic material for their child. so, the correct answer is,Trait in an organism is influenced by both maternal and paternal DNA.",
+    "fifth":"The Govt. of India had launched “Project Tiger” on 1st April 1973 to promote conservation of the tiger. Project Tiger has been the largest species conservation initiative of its kind in the world. While the field implementation of the project, protection and management in the designated reserves is done by the project States, who also provide the matching grant to recurring items of expenditure, deploy field staff/officers, and give their salaries, the Project Tiger Directorate of the Ministry of Environment and Forests was mandated with the task of providing technical guidance and funding support. "
+    },
+    {
+        
+    "ques1":"Tides in the sea are caused by",
+        "options1":{"op1":"Sun and Moon",
+            "op2":"Sun",
+            "op3":"Moon",
+            "op4":"None of the above"},
+    "ques2":"How many tentacles does a squid have?",
+        "options2":{"op1":"Four",
+            "op2":"Six",
+            "op3":"Eight",
+            "op4":"Ten"},
+    "ques3":"Which mollusk lacks a shell?",
+        "options3":{
+            "op1":"Amemone",
+            "op2":"Nudibranch",
+            "op3":"Squid",
+            "op4":"Sea Hare"
+        },
+    "ques4":"What is the largest fish in the world?",
+        "options4":{
+            "op1":"Whale Shark",
+            "op2":"Sperm Whale",
+            "op3":"Sailfish",
+            "op4":"Blue Whale"
+        },
+    "ques5":"Which is not a crustacean?",
+        "options5":{
+            "op1":"Horseshoe Crab",
+            "op2":"Hermit Crab",
+            "op3":"Frog Crab",
+            "op4":"Bay Barnacle"
+        },
+    "answers": "adbaa",
+    "first":"Forces that contribute to tides are called tidal constituents. The Earth’s rotation is a tidal constituent. The major tidal constituent is the moon’s gravitational pull on the Earth. The closer objects are, the greater the gravitational force is between them. Although the sun and moon both exert gravitational force on the Earth, the moon’s pull is stronger because the moon is much closer to the Earth than the sun is.",
+    "second":"The squid has 10 tentacles. Eight are short with suckers on the underside. Two are elongated with spatulate-shaped ends. Suckers are only on the ends of the longer tentacles.",
+    "fifth":"Horseshoe crabs are in the same phylum as crabs (Arthropoda) but are in a different subphylum than the crustaceans. They are more related to arachnids (spiders and scorpions) than they are crabs.",
+    "fourth":"The whale shark is the largest living fish in the world. It can reach lengths up to 45 feet. If you selected one of the whales, remember that whales are not fishes. They are mammals.",
+    "third":"Nudibranchs, though born with a shell, lose it after the larval stage. Squids and sea hares have highly reduced, softened internal shells called pens. Anemones are not mollusks."
+    },
+    {
+        
+    "ques1":"What oil is used for cooking in South India?",
+        "options1":{"op1":"Coconut Oil",
+            "op2":"Sunflower Oil",
+            "op3":"Olive Oil",
+            "op4":"None of the above"},
+    "ques2":"Which is the national vegetable of India?",
+        "options2":{"op1":"lady's finger",
+            "op2":"Brinjal",
+            "op3":"Meetha Kaddu",
+            "op4":"None of the above"},
+    "ques3":"Strawberry is good source of which vitamin?",
+        "options3":{
+            "op1":"C",
+            "op2":"A",
+            "op3":"K",
+            "op4":"None of these"
+        },
+    "ques4":"Lectin protein is found in __________.",
+        "options4":{
+            "op1":"Wheat",
+            "op2":"Rice",
+            "op3":"Milk",
+            "op4":"None of these"
+        },
+    "ques5":"Where does the Caesar salad originate from?",
+        "options5":{
+            "op1":"Canada",
+            "op2":"Italy",
+            "op3":"Mexico",
+            "op4":"None of these"
+        },
+    "answers": "acaac",
+    "first":"Coconut oil is most commonly used for cooking and frying. Vegetable oils like sunflower and canola are also used and ghee is poured over rice during daily meals or in special occasion dishes.",
+    "second":"Kaddu, also called Indian Pumpkin is the most popular vegetable in India. According to some scholars it may be our national vegetable. It looks like a pumpkin but has the taste and texture of butternut squash. The most common curried dish is called ‘Meetha Kaddu’, sweet pumpkin dry curry.",
+    "fifth":"Legend has it that Italian-American restaurateur Caesar Cardini invented the salad in 1924 in Tijuana, Mexico.",
+    "fourth":"Lectins are naturally occurring proteins that are found in most plants. Some foods that contain higher amounts of lectins include beans, peanuts, lentils, tomatoes, potatoes, eggplant, fruits, and wheat and other grains. Lectins serve a protective function for plants as they grow.",
+    "third":"To a lesser extent, strawberries also contain iron, copper, magnesium, phosphorus, vitamin B6, vitamin K and vitamin E. Bottom line: Strawberries are a good source of vitamin C, manganese, folate (B9) and potassium, and contain small amounts of several other vitamins and minerals."
+    }
+]

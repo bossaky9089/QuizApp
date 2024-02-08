@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.1">
+    <title>Home page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+    <style>
+*{
+    font-family: 'Ubuntu', sans-serif;
+    padding: 0;
+    cursor: default;
+    margin: 0;
+}
+.head .logosect{
+    float: left;
+    transform: scale(.5);
+}
+.head .logo{
+    font-size: 60px;
+    cursor: pointer;
+    position:relative;
+    left: 80px;
+    top: -45px;
+    font-weight: 800;
+    padding-bottom: 60px;
+    display: inline-block;
+    background: linear-gradient(to bottom, #d7f9db 40%, #41f37938 0%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: rotateZ(-20deg);
+}
+.head .logo .box{
+    border: 8px solid #d7f9db;
+    position:absolute;
+    top: 0px;
+    height: 70px;
+    left: -15px;
+    width: 70px;
+}
+.head .logo .box .cir{
+    position: absolute;
+    width: 13px;
+    right: 5px;
+    top: 5px;
+    height: 13px;
+    background: linear-gradient(to top, #d7f9db , #35457338 );
+    border-radius: 50%;
+}
+.head{
+    width: 100%;
+    height: 65px;
+    background-color: #41f3799b;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(30px);
+    position:fixed;
+}
+.head nav{
+    float: right;
+    width: 50%;
+    height: 100%;
+}
+.head nav ul{
+    list-style-type: none;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+.head nav ul li form{
+    text-decoration: none;
+    font-weight: 500;
+    position:relative;
+    cursor: pointer;
+}
+.head nav ul li form button{
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #d7f9db8f;
+}
+.head nav ul li form::before{
+    content: '';
+    position:absolute;
+    background-color: #d7f9db;
+    height: 3px;
+    width: 0%;
+    left: 50%;
+    top: 120%;
+    border-radius: 1px;
+    transition: all ease 1s;
+}
+.head nav ul li form::after{
+    content: '';
+    position:absolute;
+    background-color: #d7f9db;
+    height: 3px;
+    width: 0%;
+    left: 50%;
+    top: -20%;
+    border-radius: 1px;
+    transition: all ease .5s;
+}
+.head nav ul li:hover form button{
+    color: #d7f9db;
+}
+.head nav ul li:hover form::before{
+    width: 110%;
+    left: -5%;
+}
+.head nav ul li:hover form::after{
+    width: 110%;
+    left: -5%;
+}
+.hero{
+    background: url("../../images/back.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #354573;
+    background-blend-mode: hard-light;
+    position:relative;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.hero .container{
+    background-color: #41f379;
+    opacity: .7;
+    position:relative;
+    height: 70%;
+    width: 200vh;
+    backdrop-filter: blur(14px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 10px rgba(0,0,0, .7);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.hero .container .quiz-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 20px;
+    color: #d7f9db;
+    font-weight: 500;
+    background-color: #3545733b;
+    border-radius: 40px;
+    align-items: center;
+    height: 50%;
+    width: 45%;
+}
+.a, .email .form .f2 .formm button{
+    text-decoration: none;
+    color: #d7f9db;
+    background-color: #354573d2;
+    border: 5px solid #d7f9dbd2;
+}
+.a{
+    top: 330px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    cursor: pointer;
+    right: 200px;
+    border-radius: 30px;
+    font-size: 30px;
+    display: inline;
+    width: 450px;
+}
+.a:hover, .email .form .f2 .formm button:hover{
+    border-color: #354573;
+    background-color: #d7f9db;
+    color: #354573;
+}
+.hero .container .quizzicle-text{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    opacity: .9;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.hero .container .quizzicle-text .major{
+    height: auto;
+    width: auto;
+    border-radius: 30px;
+    display: flex;
+    opacity: 2;
+    text-transform: uppercase;
+    font-size: 80px;
+    text-shadow: 5px 0px 0px #354573,
+                 0px 5px 0px #354573,
+                 -5px 0px 0px #354573,
+                 0px -5px 0px #354573;
+    letter-spacing: 5px;
+    font-weight: 800;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    color: #d7f9db;
+}
+.about, .team, .email{
+    width: 100%;
+    position: relative;
+    display: flex;
+    top: 0;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-evenly;
+}
+.about{
+    background: linear-gradient(to bottom right, white, #d7f9db);
+    height: 200vh;
+}
+.about .aboutselect .about-head, .team .teamsection .team-head, .email .emailselect .email-text{
+    font-size: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+    text-transform: uppercase;
+    transition:all 1s ease;
+    cursor: pointer;
+    font-weight: 700;
+}
+.about .aboutselect .about-head, .email .emailselect .email-text{
+    color: #3545739d;
+}
+.about .aboutselect .about-head::after, .email .emailselect .email-text::after{
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 0%;
+    border-bottom-left-radius: 10px;
+    transition: all 1s ease;
+    border-bottom-right-radius: 10px;
+    top: 70%;
+    left: 50%;
+}
+.about .aboutselect .about-head::after,.email .emailselect .email-text::after{
+    background-color: #d7f9db;
+}
+.about .aboutselect:hover .about-head::after,
+.email .emailselect:hover .email-text::after{
+    left: -5%;
+    width: 110%;
+    background-color: #354573;
+}
+.about .aboutselect:hover .about-head,
+.email .emailselect:hover .email-text{
+    color: #354573;
+}
+.about .wrapper1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 90%;
+    height: 500px;
+    top: 50px;
+    border-radius: 30px;
+    background-color: #35457310;
+    box-shadow: 4px 4px 10px #35457338,
+                inset 4px 4px 10px rgba(255, 255, 255, 0.192);
+    margin-bottom: 20px;
+    align-items: center;
+    background-color: #d7f9db;
+    mix-blend-mode: darken;
+    transition: all .5s ease;
+}
+.about .wrapper1:hover{
+    box-shadow: 4px 14px 10px #35457338,
+                inset 4px 4px 10px rgba(255, 255, 255, 0.192);
+    transform: translateY(-5px);
+    background-color: #d7f9db;
+    mix-blend-mode: darken;
+}
+.about .wrapper1 p{
+    text-align: center;
+    color: #354573;
+    font-size: 20px;
+}
+.about .wrapper1 div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    left: 0;
+}
+.about .wrapper1 div img{
+    height: 500px;
+    width: 500px;
+    background-color: #d7f9db;
+    mix-blend-mode: darken;
+    object-fit: cover;
+    position:absolute;
+}
+.team{
+    background-color: #354573;
+    height: 95vh;
+    top: 0;
+}
+.team .teamsection .team-head{
+    color: #d7f9db9d;
+}
+.team .teamsection:hover .team-head{
+    color: #d7f9db;
+}
+.team .teamsection:hover .team-head::after{
+    background-color: #d7f9db;
+    left: -5%;
+    width: 110%;
+}
+.team .teamsection .team-head::after{
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 0%;
+    border-bottom-left-radius: 10px;
+    transition: all 1s ease;
+    border-bottom-right-radius: 10px;
+    top: 70%;
+    left: 50%;
+    background-color: #354573;
+}
+.team .team-members{
+    width: 90%;
+    height: 70%;
+    position: relative;
+    background-color: #3e4d7a;
+    box-shadow: 4px 4px 8px #d7f9db7a;
+    border-radius: 30px;
+    bottom: 5px;
+    transition: all 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.team .team-members:hover{
+    box-shadow: 4px 10px 10px #d7f9db7a;
+    bottom: 10px;
+}
+.team .team-members .member{
+    position:relative;
+    height: 90%;
+    width: 22%;
+    cursor: pointer;
+    overflow: hidden;
+    bottom: 5px;
+    transition: all .5s ease;
+    border-radius: 20px;
+    background-color: #d7f9db80;
+}
+.team .team-members .member .img{
+    height: 55%;
+    width: 80%;
+    top: 25%;
+    position: absolute;
+    transition: all 1s ease;
+    left: 10%;
+    background-color: #d7f9db;
+    border-radius: 50%;
+}
+.team .team-members .member .img img{
+    position: relative;
+    height: 80%;
+    width: 80%;
+    left: 10%;
+    border-radius: 50%;
+    top: 10%;
+    object-fit: cover;
+    transition: all 1s ease;
+}
+.team .team-members .member .name{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    top: 10%;
+    font-weight: 500;
+    color: #d7f9db;
+    position:absolute;
+}
+.team .team-members .member:hover .img{
+    border-radius: 0;
+}
+.team .team-members .member:hover .img img{
+    border-radius: 0;
+}
+.team .team-members .member:hover .displ{
+    top: 70%;
+}
+.team .team-members .member .displ{
+    background-color: #79aa8080;
+    width: 100%;
+    text-align: center;
+    top: 100%;
+    position:absolute;
+    color: #d7f9db;
+    font-weight: 700;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    left: -10px;
+    transition: all 1s ease;
+}
+.email{
+    height: 140vh;
+    top: 0;
+    position:relative;
+    width: 100%;
+    background: linear-gradient(to bottom right, white, #d7f9db);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 50px;
+}
+.email .form{
+    height: 70%;
+    width: 90%;
+    padding: 10px;
+    position:relative;
+    border-radius: 20px;
+    border: 3px dashed #354573;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.email .form .box{
+    position: relative;
+    width: 47%;
+    height: 90%;
+}
+.email .form .f1{
+    text-align: left;
+    color: #354573;
+}
+.email .form .f1 .info .header{
+    font-weight: 700;
+    left: 20px;
+    position:relative;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+.email .form .f1 .info .textual{
+    font-size: 25px;
+    position:relative;
+    left: 50px;
+}
+.email .form .textual1{
+    font-weight: 300;
+    position:relative;
+    left: 10px;
+    font-size: 30px;
+    padding-bottom: 30px;
+}
+.email .form .f2 .formm .text1{
+    width: 90%;
+    font-size: 20px;
+    color:#354573;
+    text-align: center;
+    font-weight: 300;
+    left: 5%;
+    margin-top: 10px;
+    position: relative;
+    height: 45px;
+}
+.email .form .f2 .formm .text2{
+    margin-top: 10px;
+    resize: none;
+    color:#354573;
+    width: 90%;
+    left: 5%;
+    height: 180px;
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 300;
+}
+.email .form .f2 .formm button{
+    left: 5%;
+    height: 80px;
+    cursor: pointer;
+    width: 90%;
+    position: relative;
+    outline: none;
+    font-weight: 700;
+    font-size: 50px;
+    margin-top: 10px;
+}
+.footer{
+    top: 0;
+    position: relative;
+    font-size: 30px;
+    height: 45px;
+    color: #d7f9db;
+    font-weight: 300;
+    padding-top: 10px;
+    background-color: #354573;
+}
+.visible{
+    position:relative;
+    width: 87%;
+    left: 5%;
+    height: 20px;
+    background-color: #354573;
+    border-radius: 5px;
+    color: #d7f9db;
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+.fa-times{
+    position:absolute;
+    right: 10px;
+    color: #d7f9dba1;
+    top: 10px;
+    cursor: pointer;
+}
+.fa-times:hover{
+    color: #d7f9db;
+}
+.usernameinv{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <section class="head">
+        <div class="logosect">
+            <span class="logo">Q <div class="box"> <div class="cir"></div></div></span>
+        </div>
+        <nav>
+            <ul>
+                <li><form action="/dashboard" method="POST"><button type="submit">Dashboard</button> <input type="text" class="usernameinv" value={{user}} name="users"></form></li>               
+                <li><form action="/choose" method="POST"><button type="submit">Quizes</button> <input type="text" class="usernameinv" value={{user}} name="users"></form></li>               
+                <li><form><button disabled>{{user}}</button></form></li>              
+                <li><form action="/" method="GET"><button type="submit">Logout</button></form></li>              
+            </ul>
+        </nav>
+    </section>
+
+    <!-- hero section -->
+    <section class="hero">
+        <div class="container">
+            <div class="quizzicle-text">
+                <span class="major">Quizzicle <br> Let's Learn</span>
+            </div>
+            <p class="quiz-content">
+                We are providing the students a platform to test <br> their knowledge to the next level. <br>
+                Now you are being requested to begin with the quizes <br> by pressing the button below <br>
+                <form action="/choose" method="POST"><button class="a">Begin Quiz</button> 
+                <input type="text" style="display:none" name="users" value={{user}}></form>
+            </p>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="aboutselect">
+            <div class="about-head"> About </div>
+        </div>
+        <div class="wrapper1">
+            <div><img src="images/quiz.jpg" alt=""></div>
+            <p> This platform will provide you user-friendly interface for <br> the Quizzicle's quizzes. 
+                You just need to select one of <br> the options and everything will be done automatically. <br>
+                From Scores to Dashboard updates all are done easily. <br>
+            </p>
+        </div>
+        <div class="wrapper1">
+            <p>
+                Variety of quizzes on various topics gives <br> broader aproach of information <br>
+                testing of the brains, simply speaking, <br> brain storming, giving contestents enough <br>
+                space for fair chances for competence.
+            </p>
+            <div><img src="images/quiz2.jpg" alt=""></div>
+
+        </div>
+    </section>
+
+    <section class="team">
+        <div class="teamsection">
+            <div class="team-head"> Team </div>
+        </div>
+        <div class="owl-carousel owl-theme team-members">
+            <div class="member m1">
+                <p class="name">Ms. Harlett</p>
+                <div class="img"><img src="images/woman-1919143_640.jpg" alt=""></div>
+                <p class="displ mt1">Lorem ipsum dolor sit amet, <br> consectetur adipisicing elit. <br> Illo, mollitia.</p>
+            </div>
+            <div class="member m2">
+                <p class="name">Mr. Henry</p>
+                <div class="img"><img src="images/man-1867175_640.jpg" alt=""></div>
+                <p class="displ mt2">Lorem ipsum dolor sit <br> amet consectetur adipisicing elit. <br> Cum, neque?</p>
+            </div>
+            <div class="member m3">
+                <p class="name">Ms. Sharlett</p>
+                <div class="img"><img src="images/woman-657753_640.jpg" alt=""></div>
+                <p class="displ mt3">Lorem ipsum dolor sit amet <br> consectetur adipisicing elit. <br> Expedita, fugit.</p>
+            </div>
+            <div class="member m4">
+                <p class="name">Mr. Harry</p>
+                <div class="img"><img src="images/man-1690965_640.jpg" alt=""></div>
+                <p class="displ mt4">Lorem ipsum, dolor sit amet <br> consectetur adipisicing elit. <br> Incidunt, consectetur!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="email">
+        <div class="emailselect">
+            <div class="email-text">Contact Us</div>
+        </div>
+        <div class="form">
+            <div class="box f1">
+                <p class="textual1">Let's know how you are feeling <br> and what is your feedback</p><br>
+                <div class="info">
+                    <p class="header"><i class="fas fa-user"></i> My name :</p>
+                    <p class="textual">Harman</p><br>
+                    <p class="header"><i class="fas fa-map-pin"></i> My place :</p>
+                    <p class="textual">Jalandhar, Punjab</p><br>
+                    <p class="header"><i class="far fa-envelope"></i> My email :</p>
+                    <p class="textual">hp72711@gmail.com</p><br>
+                </div>
+            </div>
+            <div class="box f2">
+                <form action="/gmail" method="POST" class="formm" autocomplete="off">
+                    <div class="invisible">{{message}}</div>
+                    <input type="text" style="display:none" name="usernameinv" value={{user}}>
+                    <input type="text" name="name" class="text1" placeholder="Name Here" required>
+                    <input type="email" name="email" class="text1" placeholder="Email Here" required>
+                    <input type="password" name="passw" class="text1" placeholder="Password Here" required>
+                    <input type="text" class="text1" placeholder="Subject Here" name="subject" required>
+                    <textarea name="message" class="text2" cols="30" rows="10" placeholder="Message Here" required></textarea><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section class="footer">
+        <p>Thankyou for visiting | &#169; Copyright all rights reserved</p>
+    </section>
+
+    <script>
+        if(!($('.invisible').is(':empty'))){
+            $(".invisible").addClass("visible");
+            $("<i class='fas fa-times'></i>").appendTo(".visible");
+        }
+        $(".fa-times").click(function(){
+            $(".visible").css("display","none");
+        });
+        $(".m1").mouseenter(function(){
+            $(".m1").css("width", "25%");
+            $(".m2").css("filter", "blur(10px)");
+            $(".m3").css("filter", "blur(10px)");
+            $(".m4").css("filter", "blur(10px)");
+        });
+        $(".m1").mouseleave(function(){
+            $(".m1").css("width", "22%");
+            $(".m2").css("filter", "blur(0)");
+            $(".m3").css("filter", "blur(0)");
+            $(".m4").css("filter", "blur(0)");
+        });
+        $(".m2").mouseenter(function(){
+            $(".m2").css("width", "25%");
+            $(".m1").css("filter", "blur(10px)");
+            $(".m3").css("filter", "blur(10px)");
+            $(".m4").css("filter", "blur(10px)");
+        });
+        $(".m2").mouseleave(function(){
+            $(".m2").css("width", "22%");
+            $(".m1").css("filter", "blur(0)");
+            $(".m3").css("filter", "blur(0)");
+            $(".m4").css("filter", "blur(0)");
+        });
+        $(".m3").mouseenter(function(){
+            $(".m3").css("width", "25%");
+            $(".m2").css("filter", "blur(10px)");
+            $(".m1").css("filter", "blur(10px)");
+            $(".m4").css("filter", "blur(10px)");
+        });
+        $(".m3").mouseleave(function(){
+            $(".m3").css("width", "22%");
+            $(".m2").css("filter", "blur(0)");
+            $(".m1").css("filter", "blur(0)");
+            $(".m4").css("filter", "blur(0)");
+        });
+        $(".m4").mouseenter(function(){
+            $(".m4").css("width", "25%");
+            $(".m2").css("filter", "blur(10px)");
+            $(".m3").css("filter", "blur(10px)");
+            $(".m1").css("filter", "blur(10px)");
+        });
+        $(".m4").mouseleave(function(){
+            $(".m4").css("width", "22%");
+            $(".m2").css("filter", "blur(0)");
+            $(".m3").css("filter", "blur(0)");
+            $(".m1").css("filter", "blur(0)");
+        });
+    </script>
+</body>
+</html>

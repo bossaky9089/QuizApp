@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <title>Options</title>
+    <style>
+        :root{
+            --levelone : 80px;
+            --leveltwo : 60px;
+            --levelthree : 40px;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            perspective: 1200px;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            background-color: #354573b9;
+            position: absolute;
+        }
+        .container{
+            padding-top: 8%;
+            height: 82%;
+            transition: all .5s ease;
+            width: 100%;
+            overflow: hidden;
+            position: absolute;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .container .card1, .container .card2, .container .card3, .container .card4, .container .card5{
+            display:flex;
+            height: 350px;
+            width: 300px;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+        }
+        .card11, .card22, .card33, .card44, .card55{
+            height: 400px;
+            width: 300px;
+            position: relative;
+            cursor:default;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+        }
+        /* .container .card1:hover  .card11{
+            transform: rotateY(.5turn);
+        } */
+        .container .card1 .front-side, .container .card2 .front-side, .container .card3 .front-side,
+        .container .card4 .front-side, .container .card5 .front-side{
+            position: absolute;
+            height: 100%;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            border-radius: 30px;
+            width: 100%;
+            z-index: 1;
+        }
+        .container .card4 .front-side{
+            background-image: url(images/cookies-2991174_640.jpg);
+            background-size:cover;
+            background-position: center;
+            background-color: #a52a2a7c;
+            background-blend-mode:soft-light;
+        }
+        .container .card3 .front-side{
+            background-image: url(images/jellyfish-698521_640.jpg);
+            background-size:cover;
+            background-position: center;
+            background-color: #3545737c;
+            background-blend-mode:soft-light;
+        }
+        .container .card2 .front-side{
+            background-image: url(images/cat-551554_640.jpg);
+            background-size: cover;
+            background-color: #ffa6007c;
+            background-blend-mode:soft-light;
+        }
+        .container .card1 .front-side{
+            background-image: url(images/leaf-1001679_640.jpg);
+            background-size: cover;
+            background-color: #41f3797c;
+            background-blend-mode:soft-light;
+        }
+        .container .card1 .front-side .text, .container .card2 .front-side .text, .container .card3 .front-side .text,
+        .container .card4 .front-side .text{
+            position: absolute;
+            font-size: 50px;
+            font-family: "Ubuntu", sans-serif;
+            font-weight: 600;
+            transform: translateZ(var(--leveltwo));
+            text-align: center;
+            top: 100px;
+        }
+        .container .card1 .front-side .text{  
+            left: 100px;
+            color : #0f5834;
+        }
+        .container .card3 .front-side .text{  
+            left: 80px;
+            color : #354573;
+        }
+        .container .card4 .front-side .text{  
+            left: 60px;
+            color : rgb(165, 87, 42);
+        }
+        .container .card2 .front-side .text{  
+            left: 65px;
+            color : orangered;
+        }
+        .container .card1 .front-side .line,.container .card2 .front-side .line, .container .card3 .front-side .line,
+        .container .card4 .front-side .line{
+            height: 4px;
+            width: 60%;
+            transform: translateZ(var(--levelthree)) translateX(10px);
+            position: absolute;
+            top: 160px;
+        }
+        .container .card1 .front-side .line{
+            left: 22%;
+            background-color : #0f5834;
+        }
+        .container .card2 .front-side .line{
+            left: 20%;
+            background-color : orangered;
+        }
+        .container .card3 .front-side .line{
+            left: 14%;
+            background-color : #354573;
+        }
+        .container .card4 .front-side .line{
+            left: 10%;
+            background-color : rgb(165, 87, 42);
+        }
+        .container .card1 .front-side .icon, .container .card2 .front-side .icon, .container .card3 .front-side .icon,
+        .container .card4 .front-side .icon{
+            bottom: 100px;
+            transform: translateZ(var(--levelone));
+            text-align: center;
+            position: absolute;
+            font-size: 92px;
+        }
+        .container .card1 .front-side .icon{   
+            text-shadow: 0px 0px 10px  #79aa80;
+            color: #41f379;
+            left: 190px;
+        }
+        .container .card2 .front-side .icon{   
+            text-shadow: 0px 0px 10px  orangered;
+            color: orange;
+            left: 160px;
+        }
+        .container .card3 .front-side .icon{   
+            text-shadow: 0px 0px 10px  #354573;
+            color: #d7f9db;
+            left: 120px;
+        }
+        .container .card4 .front-side .icon{   
+            text-shadow: 0px 0px 10px  rgb(165, 87, 42);
+            color: brown;
+            left: 120px;
+        }
+        .container .card1 .backside, .container .card2 .backside, .container .card3 .backside,
+        .container .card4 .backside{
+            height: 100%;
+            width: 100%;
+            border-radius: 30px;
+            transform-style: preserve-3d;
+            position: absolute;
+        }
+        .container .card1 .backside{
+            color: #41f379;
+            background-color: #79aa80;
+        }
+        .container .card2 .backside{
+            color: orange;
+            background-color: orangered;
+        }
+        .container .card3 .backside{
+            color: #d7f9db;
+            background-color: #354573;
+        }
+        .container .card4 .backside{
+            color: brown;
+            background-color: burlywood;
+        }
+        .container .card1 .backside .textb, .container .card2 .backside .textb,.container .card3 .backside .textb,
+        .container .card4 .backside .textb {
+            height: 70%;
+            width: 80%;
+            font-family: "Ubuntu", sans-serif;
+            font-weight: 500;
+            transform: translateZ(var(--levelthree));
+            top: 15%;
+            position: absolute;
+        }
+        .container .card1 .backside .textb{
+            left: 17%;
+        }
+        .container .card2 .backside .textb{
+            left: 13%;
+        }
+        .container .card3 .backside .textb{
+            left: 9%;
+        }
+        .container .card4 .backside .textb{
+            left: 5%;
+        }
+        .container .card1 .front-side form, .container .card2 .front-side form, .container .card3 .front-side form,
+        .container .card4 .front-side form{
+            bottom: 10%;
+            position: absolute;
+            padding-left: 10%;
+            transform-style: preserve-3d;
+            width: 90%;
+        }
+        .container .card1 .front-side form{
+            left: 7%;
+        }
+        .container .card2 .front-side form{
+            left: 3%;
+        }
+        .container .card3 .front-side form{
+            left: -1%;
+        }
+        .container .card4 .front-side form{
+            left: -5%;
+        }
+        .container .card1 .front-side form button, .container .card2 .front-side form button,
+        .container .card3 .front-side form button, .container .card4 .front-side form button{
+            height: 50px;
+            width: 88%;
+            cursor: pointer;
+            text-align: center;
+            transform: translateZ(var(--levelthree));
+            border-radius: 20px;
+            font-weight: 400;
+            font-family: "Ubuntu", sans-serif;
+            font-size: 30px;
+        }
+        .container .card1 .front-side form button{
+            border: 5px solid #d7f9db;
+            background:none;
+            color: #d7f9db;
+        }
+        .container .card2 .front-side form button{
+            border: 5px solid orange;
+            background:none;
+            color: orange;
+        }
+        .container .card3 .front-side form button{
+            border: 5px solid #41f379;
+            background:none;
+            color: #41f379;
+        }
+        .container .card4 .front-side form button{
+            border: 5px solid rgb(165, 87, 42);
+            background:none;
+            color: rgb(165, 87, 42);
+        }
+        .container .card1 .front-side form button:hover{
+            border: 5px solid #354573;
+            background:none;
+            color: #354573;
+        }
+        .container .card2 .front-side form button:hover{
+            border: 5px solid rgb(216, 144, 10);
+            background:none;
+            color: rgb(216, 144, 10);
+        }
+        .container .card3 .front-side form button:hover{
+            border: 5px solid #79aa80;
+            background:none;
+            color: #79aa80;
+        }
+        .container .card4 .front-side form button:hover{
+            border: 5px solid rgb(95, 50, 24);
+            background:none;
+            color: rgb(95, 50, 24);
+        }
+        .topic{
+            position: absolute;
+            width: 100%;
+            transition: all 1s ease;
+            text-align: center;
+            font-size: 80px;
+            top: 50px;
+            font-weight: 600;
+            color: #d7f9db;
+            z-index: 10;
+            font-family: "Ubuntu", sans-serif;
+        }
+        .usernameinv{
+            display:none;
+        }
+        .form{
+            top: 50px;
+            position:absolute;
+            width: 100%;
+            z-index: 99;
+            height: 10px;
+        }
+        .form button{
+            right: 20px;
+            padding-top: 10px;
+            cursor: pointer;
+            box-shadow: 5px 0 10px rgba(0, 0, 0, 0.575);
+            padding-bottom: 10px;
+            padding-left: 30px;
+            color: #354573;
+            font-size: 20px;
+            background-color: #41f379;
+            font-weight: 600;
+            border-radius: 20px;
+            border: 5px solid #354573;
+            padding-right: 30px;
+            position:absolute;
+        }
+        .form button:hover{
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <form class="form" action="/home" method="POST">
+        <input type="text" name="usernameinv" style="display:none" value={{user}}>
+        <button type="submit">Back To Home Page</button>
+    </form>
+    <div class="topic">Choose One</div>
+    <div class="container">
+        <div class="card1">
+            <div class="card11">
+                <div class="front-side">
+                    <div class="text">Plants</div>
+                    <div class="icon"><i class="fas fa-seedling"></i></div>
+                    <div class="line"></div>
+                    <form action="/plants" method="post">
+                        <button type="submit">Click to start</button>
+                        <input type="text" class="usernameinv" name="user" value={{user}}>
+                    </form>
+                </div>
+                <div class="backside">
+                    <div class="textb">This quiz will let you know more about plants, how they adapt and much more, so click the button to start quiz.</div>
+                    <form action="/plants" method="post">
+                        <button type="submit">Click to start</button>
+                        <input type="text" class="usernameinv" name="user" value={{user}}>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="card2">
+            <div class="card22">
+                <div class="front-side">
+                    <div class="text">Animals</div>
+                    <div class="icon"><i class="fas fa-paw"></i></div>
+                    <div class="line"></div>
+                    <form action="/animals" method="post">
+                        <button type="submit">Click to start</button>
+                        <input type="text" class="usernameinv" name="users" value={{user}}>
+                    </form>
+                </div>
+                <div class="backside">
+                    <div class="textb">This quiz will let you know more about animals, how they adapt and much more, so click the button to start quiz.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card3">
+            <div class="card33">
+                <div class="front-side">
+                    <div class="text">Aqua</div>
+                    <div class="icon"><i class="fas fa-fish"></i></div>
+                    <div class="line"></div>
+                    <form action="/aqua" method="post">
+                        <button type="submit">Click to start</button>
+                        <input type="text" class="usernameinv" name="users" value={{user}}>
+                    </form>
+                </div>
+                <div class="backside">
+                    <div class="textb">This quiz will let you know more about marine life, how they adapt and much more, so click the button to start quiz.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card4">
+            <div class="card44">
+                <div class="front-side">
+                    <div class="text">Food</div>
+                    <div class="icon"><i class="fas fa-utensils"></i></div>
+                    <div class="line"></div>
+                    <form action="/food" method="post">
+                        <button type="submit">Click to start</button>
+                        <input type="text" class="usernameinv" name="users" value={{user}}>
+                    </form>
+                </div>
+                <div class="backside">
+                    <div class="textb">This quiz will let you know more about food, how it marinate and much more, so click the button to start quiz.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("window").ready(function(){
+            var t1 = 0, t2 = 0, t3 = 0, t4 = 0;
+            $(".card1").mousemove(function(e){
+                var $this = $(".card11");
+                var offset = $this.offset();
+                var width = $this.width();
+                var height = $this.height();
+                
+                var centerX = offset.left + width / 2;
+                var centerY = offset.top + height / 2;
+                var x = (e.clientX - centerX)/4;
+                var y = (e.clientY - centerY)/4;
+                $this.css("transform", `rotateX(${y}deg) rotateY(${x}deg)`);
+                $this.css("transition", `.5s ease all`);
+            });
+            $(".card1").mouseleave(function(){
+                $(".card11").css("transform", `rotateX(0deg) rotateY(0deg)`);
+            });
+            $(".card1").click(function(){
+                if(t1 == .5)
+                {
+                    t1 = 0;
+                    $(".container").css("background","none");
+                    $(".topic").empty();
+                    $(".topic").append("Choose One");
+                    $(".topic").css("color", "#d7f9db");
+                }
+                else{
+                    t1 = .5;
+                    $(".container").css("background-color","#41f379");
+                    $(".topic").empty();
+                    $(".topic").append("Plants");
+                    $(".topic").css("color", "#79aa80");
+                }
+                t2 = 0;
+                t3 = 0;
+                t4 = 0;
+                $(this).css("transform",`rotateY(${t1}turn)`)
+                $(this).css("transition",".5s ease all")
+                $(".card2").css("transform",`rotateY(0turn)`)
+                $(".card2").css("transition",".5s ease all")
+                $(".card3").css("transform",`rotateY(0turn)`)
+                $(".card3").css("transition",".5s ease all")
+                $(".card4").css("transform",`rotateY(0turn)`)
+                $(".card4").css("transition",".5s ease all")
+            });
+        
+            $(".card2").mousemove(function(e){
+                var $this = $(".card22");
+                var offset = $this.offset();
+                var width = $this.width();
+                var height = $this.height();
+                
+                var centerX = offset.left + width / 2;
+                var centerY = offset.top + height / 2;
+                var x = (e.clientX - centerX)/4;
+                var y = (e.clientY - centerY)/4;
+                $this.css("transform", `rotateX(${y}deg) rotateY(${x}deg)`);
+                $this.css("transition", `.5s ease all`);
+            });
+            $(".card2").mouseleave(function(){
+                $(".card22").css("transform", `rotateX(0deg) rotateY(0deg)`);
+            });
+            $(".card2").click(function(){
+                if(t2 == .5){
+                    t2 = 0;
+                    $(".container").css("background","none");  
+                    $(".topic").empty();
+                    $(".topic").append("Choose One");
+                    $(".topic").css("color", "#d7f9db");
+                }
+                else{
+                    t2 = .5;
+                    $(".container").css("background-color","orange");
+                    $(".topic").empty();
+                    $(".topic").append("Animals");
+                    $(".topic").css("color", "orangered");
+                }
+                t1 = 0;
+                t4 = 0;
+                t3 = 0;
+                $(this).css("transform",`rotateY(${t2}turn)`)
+                $(this).css("transition",".5s ease all")
+                $(".card1").css("transform",`rotateY(0turn)`)
+                $(".card1").css("transition",".5s ease all")
+                $(".card3").css("transform",`rotateY(0turn)`)
+                $(".card3").css("transition",".5s ease all")
+                $(".card4").css("transform",`rotateY(0turn)`)
+                $(".card4").css("transition",".5s ease all")
+            });
+        
+            $(".card3").mousemove(function(e){
+                var $this = $(".card33");
+                var offset = $this.offset();
+                var width = $this.width();
+                var height = $this.height();
+                
+                var centerX = offset.left + width / 2;
+                var centerY = offset.top + height / 2;
+                var x = (e.clientX - centerX)/4;
+                var y = (e.clientY - centerY)/4;
+                $this.css("transform", `rotateX(${y}deg) rotateY(${x}deg)`);
+                $this.css("transition", `.5s ease all`);
+            });
+            $(".card3").mouseleave(function(){
+                $(".card33").css("transform", `rotateX(0deg) rotateY(0deg)`);
+            });
+            $(".card3").click(function(){
+                if(t3 == .5){
+                    t3 = 0;
+                    $(".container").css("background","none");
+                    $(".topic").empty();
+                    $(".topic").append("Choose One");
+                    $(".topic").css("color", "#d7f9db");
+                }
+                else{
+                    t3 = .5;
+                    $(".container").css("background-color","#d7f9db");
+                    $(".topic").empty();
+                    $(".topic").append("Aqua");
+                    $(".topic").css("color", "#354573");
+                }
+                t1 = 0;
+                t2 = 0;
+                t4 = 0;
+                $(this).css("transform",`rotateY(${t3}turn)`)
+                $(this).css("transition",".5s ease all")
+                $(".card2").css("transform",`rotateY(0turn)`)
+                $(".card2").css("transition",".5s ease all")
+                $(".card1").css("transform",`rotateY(0turn)`)
+                $(".card1").css("transition",".5s ease all")
+                $(".card4").css("transform",`rotateY(0turn)`)
+                $(".card4").css("transition",".5s ease all")
+            });
+
+            $(".card4").mousemove(function(e){
+                var $this = $(".card44");
+                var offset = $this.offset();
+                var width = $this.width();
+                var height = $this.height();
+                
+                var centerX = offset.left + width / 2;
+                var centerY = offset.top + height / 2;
+                var x = (e.clientX - centerX)/4;
+                var y = (e.clientY - centerY)/4;
+                $this.css("transform", `rotateX(${y}deg) rotateY(${x}deg)`);
+                $this.css("transition", `.5s ease all`);
+            });
+            $(".card4").mouseleave(function(){
+                $(".card44").css("transform", `rotateX(0deg) rotateY(0deg)`);
+            });
+            $(".card4").click(function(){
+                if(t4 == .5){
+                    t4 = 0;
+                    $(".container").css("background", "none");
+                    $(".topic").empty();
+                    $(".topic").append("Choose One");
+                    $(".topic").css("color", "#d7f9db");
+                }
+                else{
+                    t4 = .5;
+                    $(".container").css("background-color", "brown");
+                    $(".topic").empty();
+                    $(".topic").append("Food");
+                    $(".topic").css("color", "burlywood");
+                }
+                t1 = 0;
+                t2 = 0;
+                t3 = 0;
+                $(this).css("transform",`rotateY(${t4}turn)`)
+                $(this).css("transition",".5s ease all")
+                $(".card2").css("transform",`rotateY(0turn)`)
+                $(".card2").css("transition",".5s ease all")
+                $(".card1").css("transform",`rotateY(0turn)`)
+                $(".card1").css("transition",".5s ease all")
+                $(".card3").css("transform",`rotateY(0turn)`)
+                $(".card3").css("transition",".5s ease all")
+            });
+        });
+    </script>
+</body>
+</html>

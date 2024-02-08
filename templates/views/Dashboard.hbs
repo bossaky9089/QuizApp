@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "Ubuntu", sans-serif;
+        }
+        .head{
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            background:url('images/diagonal-1468348_1920.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: #79aa80;
+            background-blend-mode:soft-light;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .head .board{
+            height: 95vh;
+            width: 97%;
+            position: relative;
+            background-color: #d7f9db70;
+            backdrop-filter: blur(10px);
+            box-shadow: 5px 5px 10px rgba(0,0,0, .5);
+            border-radius: 30px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .head .board .box{
+            height: 90%;
+            border-radius: 40px;
+            position: relative;
+            background-color:#79aa80bc;
+        }
+        .head .board .lsidebar{
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .head .board .lsidebar .insimg{
+            width: 230px;
+            background-color: #d7f9db8c;
+            height: 230px;
+            font-size: 150px;
+            border-radius: 50%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .head .board .lsidebar .in{
+            width: 90%;
+            position: relative;
+            display:flex;
+            align-items: center;
+            color: #354573;
+            justify-content: center;
+            font-weight: 500;
+            background-color: #d7f9db8c;
+            border-radius: 20px;
+        }
+        .head .board .lsidebar .name{
+            height: 10%;
+            font-size: 20px;
+            top: 10px;
+            bottom: 3px;
+        }
+        .head .board .lsidebar .bio{
+            height: 25%;
+            top: 15px;
+            font-size: 20px;
+        }
+        .head .board .rsidebar{
+            width: 65%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .head .board .rsidebar .r1{
+            width: 90%;
+            background-color: #d7f9db8c;
+            position:relative;
+        }
+        .head .board .rsidebar .info{
+            bottom: 7px;
+            height: 27%;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            color: #354573;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .head .board .rsidebar .info .r2{
+            height: 70%;
+            left: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 80%;
+        }
+        .head .board .rsidebar .info:hover .r2::after{
+            width: 60%;
+        }
+
+        .head .board .rsidebar .info .per{
+            width: 100%;
+            top: 0px;
+            font-size: 25px;
+            text-decoration: underline;
+            font-weight: 500;
+            text-align: center;
+            position: relative;
+            margin-bottom: 5px;
+        }
+        .head .board .rsidebar .info .r3{
+            height: 85%;
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            align-items: center;
+        }
+        .head .board .rsidebar .info .r3 .header1{
+            font-weight: 500;
+            font-size: 15px;
+            text-transform: uppercase;
+            position:absolute;
+            left: 15px;
+            top: -5px;
+        }
+        .head .board .rsidebar .info .r3 .text1{
+            font-weight: 300;
+            font-size: 25px;
+            position:absolute;
+            left: 35px;
+            top: 10px;
+        }
+        .head .board .rsidebar .quizzes{
+            height: 60%;
+            top: 7px;
+            bottom: 10px;
+            position: relative;
+            overflow-y: scroll;
+            scrollbar-color: #354573 rgba(255, 255, 255, 0);
+            scrollbar-width: thin;
+            scroll-behavior: smooth;
+        }
+        .head .board .rsidebar .quizzes .container2{
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 230%;
+            top: 100px;
+        }
+        .head .board .rsidebar .quizzes .names{
+            position:absolute;
+            height: 60px;
+            width: 90%;
+            top: 40px;
+            display: flex;
+            font-size: 30px;
+            font-weight: 700;
+            border-radius: 10px;
+            color: #354573;
+            padding-left: 5%;
+            align-items: center;
+        }
+        .head .board .rsidebar .quizzes .quizes{
+            position:relative;
+            height: 100%;
+            width: 95%;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            align-items: center;
+            background-color: #d7f9dba1;
+        }
+        .head .board .rsidebar .quizzes .q1,
+        .head .board .rsidebar .quizzes .q2,
+        .head .board .rsidebar .quizzes .q3
+        {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .head .board .rsidebar .quizzes .quizes .type{
+            position: relative;
+            height: 80%;
+            overflow: hidden;
+            right: 10px;
+            border-radius: 20px;
+            width: 20%;
+        }
+        .head .board .rsidebar .quizzes .quizes .type img{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .head .board .rsidebar .quizzes .quizes .container{
+            position: relative;
+            height: 80%;
+            left: 10px;
+            width: 65%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: center;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .name{
+            position:relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 20%;
+            width: 90%;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .name p{
+            color: #354573;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .name .head2{
+            font-weight: 700;
+            font-size: 20px;
+            position: absolute;
+            left: 10px;
+            text-transform: uppercase;
+            top: -15px;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .name .text3{
+            font-weight: 300;
+            font-size: 30px;
+            position:absolute;
+            left: 100px;
+            top: -5px;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .percentage{
+            position:relative;
+            display: flex;
+            justify-content:space-evenly;
+            align-items: center;
+            height: 60%;
+            width: 90%;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .marks{
+            position:relative;
+            height: 60%;
+            color: #354573;
+            width: 20%;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .marks .head2{
+            position:relative;
+            top: -20px;
+            left: -5px;
+            font-weight: 700;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .marks .text3{
+            position:relative;
+            left: 20px;
+            top: -20px;
+            font-size: 30px;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .percent{
+            position:relative;
+            height: 60%;
+            color: #354573;
+            width: 70%;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .percent .head2{
+            position:relative;
+            top: 0px;
+            left: 0px;
+            font-weight: 700;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .percent .text3{
+            position:absolute;
+            right: 5px;
+            font-size: 20px;
+            top: 5px;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .percent .bar{
+            position: relative;
+            top: 30%;
+            height: 5px;
+            width: 80%;
+            left: 1%;
+            background-color: #d7f9db62;
+        }
+        .head .board .rsidebar .quizzes .quizes .container .percent .bar .bar2{
+            content: '';
+            position: absolute;
+            height: 100%;
+            background-color: #354573;
+        }
+        .fa-edit{
+            position: absolute;
+            font-size: 14px;
+            cursor: pointer;
+            color:#354573bd;
+        }
+        .e1{
+            bottom: 10px;
+            right: 10px;
+        }
+        .e2{
+            bottom: 10px;
+            right: 30px;
+        }
+        .fa-edit:hover{
+            transform: scale(1.5);
+            color:#d7f9db;
+        }
+        .info-change{
+            height: 100vh;
+            width: 100%;
+            top: 0;
+            z-index: 9;
+            background-color: #35457398;
+            position:absolute;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .info-change .form-container{
+            position: relative;
+            height:34em;
+            width: 50em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 5px dashed #d7f9db;
+            flex-direction: column;
+        }
+        .info-change .form-container form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            height: 70%;
+            width: 100%;
+        }
+        .info-change .form-container h3{
+            font-size: 50px;
+            color: #d7f9db;
+        }
+        .info-change .form-container form input{
+            position:relative;
+            height: 15%;
+            color: #354573;
+            background-color: #d7f9db;
+            font-weight: 300;
+            font-size: 30px;
+            text-align: center;
+            width: 80%;
+        }
+        .info-change .form-container form textarea{
+            resize: none;
+            position:relative;
+            height: 45%;
+            width: 80%;
+            color: #354573;
+            background-color: #d7f9db;
+            font-weight: 300;
+            font-size: 30px;
+            text-align: center;
+        }
+        .info-change .form-container form button{
+            position:relative;
+            height: 15%;
+            width: 80%;
+            cursor: pointer;
+            margin-top: 5px;
+            color: #354573;
+            background-color: #d7f9db;
+            font-weight: 700;
+            font-size: 30px;
+            text-align: center;
+        }
+        .info-change i{
+            position: absolute;
+            top: 1em;
+            cursor: pointer;
+            right: 1em;
+            color: #d7f9dbbd;
+            font-size: 14px;
+        }
+        .info-change i:hover{
+            transform: scale(1.5);
+            color: #d7f9db;
+        }
+        .lets{
+            position:absolute;
+            top: 1em;
+            right: 1em;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .lets button{
+            background-color: #41f379;
+            border: 1px solid #354573;
+            border-radius: 1em;
+            color: #d7f9db;
+            height: 2em;
+            width: 5em;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+        }
+        .lets button:hover{
+            transform: translateX(-5px);
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+        }
+        .usernameinv{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <form action="/home" method="post" class="lets">
+        <input type="text" class="usernameinv" value={{user}} name="usernameinv">
+        <input type="text" class="gen" style="display:none" value={{gender}}>
+        <input type="text" class="widths" style="display:none" value={{widths}} name="widths">
+        <button type="submit"><i class="far fa-arrow-alt-circle-left"></i> Back</button>
+    </form>
+    <section class="head">
+        <div class="board">
+            <div class="lsidebar box">
+                <div class="insimg">
+                    <i class="icon fas"></i>
+                </div>
+                <div class="name in">{{name}}</div>
+                <div class="bio in">{{bio}}</div>
+                <i class="fas fa-edit e2"></i>
+            </div>
+            <div class="rsidebar box">
+                <div class="info r1">
+                    <p class="per">Personal info</p>
+                    <i class="fas fa-edit e1"></i>
+                    <div class="r3">
+                        <div class="gender r2">
+                            <p class="header1">Gender</p><br>
+                            <p class="text1">{{gender}}</p>
+                        </div>
+                        <div class="address r2">
+                            <p class="header1">Address</p>
+                            <p class="text1">{{city}}, {{state}}</p>
+                        </div>
+                        <div class="username r2">
+                            <p class="header1">Username</p><br>
+                            <p class="text1">{{user}}</p>
+                        </div>
+                        <div class="profession r2">
+                            <p class="header1">Profession</p><br>
+                            <p class="text1">{{profession}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="quizzes r1">
+                    <p class="names">Quiz attempts</p>
+                    <div class="container2">
+                        <div class="quizes q1">
+                            <div class="type"><img src="images/cookies-2991174_640.jpg" alt=""></div>
+                            <div class="container">
+                                <div class="name">
+                                    <p class="head2">Theme :</p>
+                                    <p class="text3">Food</p>
+                                </div>
+                                <div class="percentage">
+                                    <div class="marks">
+                                        <p class="head2">Average Points :</p>
+                                        <p class="text3">{{avf}}</p>
+                                    </div>
+                                    <div class="percent">
+                                        <p class="head2">Percentage :</p>
+                                        <div class="bar"><div class="bar2 bbc1"></div></div>
+                                        <p class="text3">{{avpf}}%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quizes q2">
+                            <div class="type"><img src="images/jellyfish-698521_640.jpg" alt=""></div>
+                            <div class="container">
+                                <div class="name">
+                                    <p class="head2">Theme :</p>
+                                    <p class="text3">Aqua</p>
+                                </div>
+                                <div class="percentage">
+                                    <div class="marks">
+                                        <p class="head2">Average Points :</p>
+                                        <p class="text3">{{avq}}</p>
+                                    </div>
+                                    <div class="percent">
+                                        <p class="head2">Percentage :</p>
+                                        <div class="bar"><div class="bar2 bbc2"></div></div>
+                                        <p class="text3">{{avpq}}%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quizes q3">
+                            <div class="type"><img src="images/cat-551554_640.jpg" alt=""></div>
+                            <div class="container">
+                                <div class="name">
+                                    <p class="head2">Theme :</p>
+                                    <p class="text3">Animals</p>
+                                </div>
+                                <div class="percentage">
+                                    <div class="marks">
+                                        <p class="head2">Average Points :</p>
+                                        <p class="text3">{{avn}}</p>
+                                    </div>
+                                    <div class="percent">
+                                        <p class="head2">Percentage :</p>
+                                        <div class="bar"><div class="bar2 bbc3"></div></div>
+                                        <p class="text3">{{avpn}}%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quizes q3">
+                            <div class="type"><img src="images/leaf-1001679_640.jpg" alt=""></div>
+                            <div class="container">
+                                <div class="name">
+                                    <p class="head2">Theme :</p>
+                                    <p class="text3">Plants</p>
+                                </div>
+                                <div class="percentage">
+                                    <div class="marks">
+                                        <p class="head2">Average Points :</p>
+                                        <p class="text3">{{avp}}</p>
+                                    </div>
+                                    <div class="percent">
+                                        <p class="head2">Percentage :</p>
+                                        <div class="bar"><div class="bar2 bbc4"></div></div>
+                                        <p class="text3">{{avpp}}%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="info-changer">
+        <i class="fas fa-times t1"></i>
+        <div class="form-container">
+            <h3>Type here the changes</h3>
+            <form action="/info-change1" method="POST">
+                <input type="text" class="usernameinv" value={{user}} name="usernameinv">
+                <input type="text" readonly value={{gender}}><br>
+                <input type="text" placeholder="City" name="city"><br>
+                <input type="text" placeholder="State" name="state"><br>
+                <input type="text" placeholder="Username" name="username"><br>
+                <input type="text" placeholder="Profession" name="profession">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+    <section class="info-changer2">
+        <i class="fas fa-times t2"></i>
+        <div class="form-container">
+            <h3>Type here the changes</h3>
+            <form action="/info-change2" method="POST">
+                <input type="text" class="usernameinv" value={{user}} name="users">
+                <input type="text" placeholder="Name" name="name"><br>
+                <textarea name="bio" class="bio" placeholder="Bio"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        $(".e1").click(function(){
+            $(".info-changer").addClass("info-change")            
+        });
+        $(".t1").click(function(){
+            $(".info-changer").removeClass("info-change")
+        });
+        $(".e2").click(function(){
+            $(".info-changer2").addClass("info-change")            
+        });
+        $(".t2").click(function(){
+            $(".info-changer2").removeClass("info-change")
+        });
+        var ww = $(".widths").val();
+        ww = ww.split(",");
+        $(".bbc1").css("width",ww[0]);
+        $(".bbc2").css("width",ww[1]);
+        $(".bbc3").css("width",ww[2]);
+        $(".bbc4").css("width",ww[3]);
+        var ge = $(".gen").val();
+        if(ge == "Male"){
+            $(".icon").addClass("fa-male");
+            $(".insimg").css("color","#35457359");
+        }else if(ge == "Others"){
+            $(".icon").addClass("fa-transgender-alt");
+            $(".circle").css("color","#c62ff7d4");
+        }else{
+            $(".icon").addClass("fa-female");
+            $(".insimg").css("color","#FF573359");
+        }
+    </script>
+</body>
+</html>

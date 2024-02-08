@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css"/>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: "Ubuntu", sans-serif;
+    user-select: none;
+}
+.cc{
+    background: linear-gradient(to top left, #d7f9db, #41f379);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    background-color: #354573c7;
+    width: 95%;
+    height: 90%;
+    position: relative;
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+.container .column{
+    position:relative;
+    height: 90%;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container .left .top{
+    font-size: 50px;
+    font-weight: 500;
+    position:relative;
+    color: #d7f9db;
+}
+.container .left .top .logo{
+    font-size: 100px;
+    position:relative;
+    padding-bottom: 60px;
+    display: inline-block;
+    background: linear-gradient(to bottom, #79aa80 40%, #41f37938 0%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: rotateZ(-20deg);
+}
+.container .left .top .logo .box{
+    border: 5px solid #79aa80;
+    position:absolute;
+    top: 10px;
+    height: 110px;
+    left: -10px;
+    width: 100px;
+}
+.container .left .top .logo .box .cir{
+    position: absolute;
+    width: 15px;
+    right: 10px;
+    top: 10px;
+    height: 15px;
+    background: linear-gradient(to top, #79aa80 , #41f37938 );
+    border-radius: 50%;
+}
+.container .left .top .logopart{
+    position:relative;
+    display: inline-block;
+    top: 20px;
+    left: 45px;
+    width: 50%;
+}
+.container .left .cont .Login .logins{
+    font-size: 40px;
+    color: #f9dcd7;
+    font-weight: 300;
+}
+.container .left .cont .Login .slogins{
+    font-size: 40px;
+    color: #f9dcd7;
+    font-weight: 300;
+}
+.container .right{
+    background-color: #d7f9db;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.container .right .form1{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    height:100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; 
+}
+.container .right .form1 label,.container .right .form2 #si{
+    font-size: 80px;
+    color: #354573;
+}
+.container .right .form1 .wrap, .container .right .form2 .contain2{
+    width: 500px;
+    height: 150px;
+    position:relative;
+}
+.container .right .form1 .wrap input, .container .right .form2 .contain2 .in{
+    display: inline-block;
+    height: 30px;
+    width: 80%;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #354573c0;
+    font-size: 20px;
+    text-align: center;
+    background: none;
+    color: #354573;
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+.fa-eye{
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+    color: #354573;
+    left: 5px;
+    cursor: pointer;
+    opacity: .5;
+}
+.fa-eye-slash{
+    font-size: 30px;
+    position: relative;
+    color: #354573;
+    cursor: pointer;
+    top: 5px;
+    left: 3px;
+    opacity: .5;
+}
+.container .right .form1 .wrap .fa-eye-slash:hover{
+    opacity: .8;
+}
+.container .right .form1 .wrap .fa-eye:hover{
+    opacity: .8;
+}
+.container .right .form1 .wrap .submit, .container .right .form2 .contain2 .submit{
+    background-color: #41f379;
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 25px;
+    width: 150px;
+    font-weight: 500;
+    margin-left: 35%;
+    text-align: center;
+    border: 3px solid #354573;
+    color: #354573;
+    font-size: 20px;
+    cursor: pointer;
+}
+.container .right .form2 .contain2 .submit:hover{
+    border: 3px solid #41f379;
+    color: #41f379;
+    background-color: #354573;
+}
+.container .right .form1 .wrap .submit:hover{
+    border: 3px solid #41f379;
+    color: #41f379;
+    background-color: #354573;
+}
+.container .right .form2{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; 
+    
+}
+.simplebar-scrollbar:before {
+    background-color: #8e41f3;
+  }
+  
+.simplebar-scrollbar {
+    margin-right: 2px;
+    color: #41f379;
+}
+.container .right .contain{
+    position:absolute;
+    width: 200%;
+    height: 100%;
+    display: flex;
+    left: 0;
+	transition: left 1s ease;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container .right .form2 .contain2 label{
+    margin-left: 40px;
+    color: #354573;
+    font-size: 30px;
+}
+.container .right .form2 .contain2 .ra{
+    display: none;
+}
+.container .right .form2 .contain2 .lab{
+    font-weight: 500;
+    margin-left: 80px;
+    cursor: pointer;
+    padding-bottom: 50px;
+    font-size: 20px;
+}
+.container .right .form2 .contain2 .lab .fa-check-circle{
+    color: #41f379;
+}
+.container .right .form2 .contain2 .lab .fa-circle{
+    color: #354573;
+}
+.container .right .form2 .contain2 .labb{
+    margin-top: 20px;
+}
+.dots{
+    position:fixed;
+    height: 50px;
+    width: 100px;
+    z-index: 999;
+    right: 350px;
+    top: 90px;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.dots .dot{
+    height: 30px;
+    width: 30px;
+    background-color: #3545739a;
+    border-radius: 15px;
+    transition: all .5s ease;
+}
+.dots .extended{
+    width: 50px;
+}
+.dots .dot:hover{
+    background-color: #354573;
+}
+.usernameinv{
+    display: none;
+}
+    </style>
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="dots">
+        <div class="dot d1 extended"></div>
+        <div class="dot d2"></div>
+    </div>
+    <div class="cc">
+        <div class="container">
+            <div class="column left">
+                <div class="cont">
+                    <div class="top">
+                        <span class="logo">Q <div class="box"> <div class="cir"></div></div></span><span class="logopart">uizzicle - Let's Learn</span>
+                    </div>
+                    <div class="Login">
+                        <div class="logins">Let Us Know More About You</div>
+                        <div class="slogins">For Us To Recognise You</div>
+                    </div>
+                </div>
+            </div>
+            <div class="column right">
+                <div class="contain">
+                    <form action="/login1" method="POST" class="form1" autocomplete="off">
+                        <label for="">Login</label>
+                        <div class="wrap">
+                            <input type="text" placeholder="Userame Here" autocomplete="false" class="ll1" name="username1" required><br>
+                            <input type="password" placeholder="Password Here" class="pas ll2" autocomplete="false" name="pass1" required> <i class="far fa-eye-slash" id="visible"></i><br>
+                            <button type="submit" class="submit">Submit</nutton>
+                        </div>
+                    </form>
+                    <form action="/signup" method="POST" class="form2" autocomplete="off">
+                        <label for="" id="si">Signup</label>
+                        <div class="contain2" data-simplebar data-simplebar-auto-hide="false">
+                            <input type="text" placeholder="Your Full Name" class="in ll3" name="name2" required><br>
+                            <input type="text" placeholder="Your Username" class="in ll4" name="user2" required><br>
+                            <label for="">Gender : </label><br>
+                            <input type="radio" name="gender" value="Male" class="ra"><label for="male" class="lab mal"><i class="far fa-circle" id="mal1"></i> Male</label> <br>
+                            <input type="radio" name="gender" value="Female" class="ra"><label for="female" class="lab fem"><i class="far fa-circle" id="fema1"></i>  Female</label><br>
+                            <input type="radio" name="gender" value="Others" class="ra"><label for="others" class="lab oth"><i class="far fa-circle" id="othere"></i>  Others</label><br>
+                            <input type='text' class="love" name="gend" style="display:none" required><br>
+                            <input type="text" placeholder="Your Profession" class="in ll5 labb" name="prof" required>
+                            <input type="password" placeholder="New Password" class="in ll6 pas1" name="pass2" required> <i class="far fa-eye-slash" id="visible2"></i><br>
+                            <input type="text" placeholder="Confirm Password" class="in ll7" name="cpass" required>
+                            <button type="submit" class="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var a = $("#visible");
+        var aa= $("#visible2");
+        var ll = $(".love");
+        a.click(function(){
+            if(a.hasClass("fa-eye")){
+                a.removeClass("fa-eye");
+                a.addClass("fa-eye-slash");
+                $(".pas").prop("type","password");
+            }
+            else{
+                a.removeClass("fa-eye-slash");
+                a.addClass("fa-eye")
+                $(".pas").prop("type","text");
+            }
+        });
+        aa.click(function(){
+            if(aa.hasClass("fa-eye")){
+                aa.removeClass("fa-eye");
+                aa.addClass("fa-eye-slash");
+                $(".pas1").prop("type","password");
+            }
+            else{
+                aa.removeClass("fa-eye-slash");
+                aa.addClass("fa-eye")
+                $(".pas1").prop("type","text");
+            }
+        });
+        $(".ll1").focus(function(){
+            $(".ll1").css("border-color","#354573")
+        });
+        $(".ll1").blur(function(){
+            $(".ll1").css("border-color","#354573c0")
+        });
+        $(".ll2").focus(function(){
+            $(".ll2").css("border-color","#354573")
+        });
+        $(".ll2").blur(function(){
+            $(".ll2").css("border-color","#354573c0")
+        });
+        $(".ll3").focus(function(){
+            $(".ll3").css("border-color","#354573")
+        });
+        $(".ll3").blur(function(){
+            $(".ll3").css("border-color","#354573c0")
+        });
+        $(".ll4").focus(function(){
+            $(".ll4").css("border-color","#354573")
+        });
+        $(".ll4").blur(function(){
+            $(".ll4").css("border-color","#354573c0")
+        });
+        $(".ll5").focus(function(){
+            $(".ll5").css("border-color","#354573")
+        });
+        $(".ll5").blur(function(){
+            $(".ll5").css("border-color","#354573c0")
+        });
+        $(".mal").click(function(){
+            ll.val("Male");
+            if($("#mal1").hasClass("fa-circle")){
+                $("#mal1").removeClass("fa-circle");
+                $("#mal1").addClass("fa-check-circle");
+            }
+            if($("#fema1").hasClass("fa-check-circle")){
+                $("#fema1").removeClass("fa-check-circle");
+                $("#fema1").addClass("fa-circle");
+            }
+            if($("#othere").hasClass("fa-check-circle")){
+                $("#othere").removeClass("fa-check-circle");
+                $("#othere").addClass("fa-circle");
+            }
+        });
+        $(".fem").click(function(){
+            ll.val("Female");
+            if($("#mal1").hasClass("fa-check-circle")){
+                $("#mal1").removeClass("fa-check-circle");
+                $("#mal1").addClass("fa-circle");
+            }
+            if($("#fema1").hasClass("fa-circle")){
+                $("#fema1").removeClass("fa-circle");
+                $("#fema1").addClass("fa-check-circle");
+            }
+            if($("#othere").hasClass("fa-check-circle")){
+                $("#othere").removeClass("fa-check-circle");
+                $("#othere").addClass("fa-circle");
+            }
+        });
+        $(".oth").click(function(){
+            ll.val("Others");
+            if($("#mal1").hasClass("fa-check-circle")){
+                $("#mal1").removeClass("fa-check-circle");
+                $("#mal1").addClass("fa-circle");
+            }
+            if($("#fema1").hasClass("fa-check-circle")){
+                $("#fema1").removeClass("fa-check-circle");
+                $("#fema1").addClass("fa-circle");
+            }
+            if($("#othere").hasClass("fa-circle")){
+                $("#othere").removeClass("fa-circle");
+                $("#othere").addClass("fa-check-circle");
+            }
+        });
+        $(".d1").click(function(){
+			$(".contain").css("left","0");
+			if($(".d1").hasClass("extended")){
+				$(".d1").removeClass("extended");
+				$(".d2").addClass("extended");
+			}else{
+				$(".d1").addClass("extended");
+				$(".d2").removeClass("extended");
+			}
+		});
+		$(".d2").click(function(){
+			$(".contain").css("left","-100%");
+			if($(".d2").hasClass("extended")){
+				$(".d1").addClass("extended");
+				$(".d2").removeClass("extended");
+			}else{
+				$(".d2").addClass("extended");
+				$(".d1").removeClass("extended");
+			}
+		});
+    </script>
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+</body>
+</html>
